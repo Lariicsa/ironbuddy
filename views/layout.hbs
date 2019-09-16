@@ -10,6 +10,48 @@
   <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 <body>
+<nav class="navbar is-transparent">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="/">
+    <img src="/images/ironhack-logo.png" alt="ironhack-logo">
+    </a>
+    <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+
+  <div id="navbarExampleTransparentExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item" href="/">
+        Home
+      </a>
+      <a class="navbar-item" href="/profile">
+          Profile
+      </a>
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="field is-grouped">
+          <p class="control">
+            <a class="button is-text" data-social-action="tweet" data-social-target="http://localhost:4000" target="_blank" href="/auth/login">
+              <span>
+                Log In
+              </span>
+            </a>
+          </p>
+          <p class="control">
+            <a class="button is-text" href="/logout">
+              <span>Log out</span>
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
 <section class="section">
     <div class="container">
      {{{body}}}
