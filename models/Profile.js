@@ -5,7 +5,7 @@ const profileSchema = new Schema(
     name: String,
     img: {
       type: String,
-      default: 'https://img.icons8.com/clouds/2x/user.png'
+      default: 'https://www.sutterhealth.org/assets/img/dr-profiles/default-dr-profile.png'
     }
   },
   {}

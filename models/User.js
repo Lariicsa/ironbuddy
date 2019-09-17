@@ -3,9 +3,9 @@ const plm = require('passport-local-mongoose')
 
 const userSchema = new Schema(
   {
+    name: String,
     email: String,
 		password: String,
-		name: String,
 		lastname: String,
     role: {
       type: String,
@@ -13,8 +13,12 @@ const userSchema = new Schema(
       default: 'USER'
     },
     profile: {
-      ref: 'Profile',
+      ref: 'Resource',
       type: Schema.Types.ObjectId
+    },
+    img: {
+      type: String,
+      default: 'https://www.sutterhealth.org/assets/img/dr-profiles/default-dr-profile.png'
     }
   },
   {

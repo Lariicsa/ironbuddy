@@ -1,8 +1,13 @@
 const User = require('../models/User')
-const Profile = require('../models/Profile')
+const Resource = require('../models/Resource')
 
-exports.showProfile = async (req, res) => {
-  const user = await User.findById(req.user.id).populate('profile')
-
+exports.showProfile  = async (req, res) => {
+  const user = await User.findById(req.user._id).populate('resource')
+  console.log(user)
   res.render('profile', user)
 }
+
+
+
+
+
