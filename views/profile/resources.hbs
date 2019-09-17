@@ -1,0 +1,30 @@
+<div class="columns is-desktop is-centered">
+	<div class="column is-half">
+		<h3 class="title is-4">Resources</h3>
+		<hr>
+		<div class="box">
+			<table class="table is-striped is-fullwidth">
+				<thead>
+					<tr>
+						<th><abbr></abbr></th>
+						<th>Nombre</th>
+						<th><abbr>Link</abbr></th>
+						<th>...</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each resources }}
+					<tr>
+						<td></td>
+						<td>{{this.name}}</td>
+						<td class="link"><p>{{this.url}}</p></td>
+					</tr>
+					{{/each}}
+				</tbody>
+			</table>
+
+			<a class="button is-text" href="/profile/addresources">Add</a>
+
+		</div>
+	</div>
+</div>

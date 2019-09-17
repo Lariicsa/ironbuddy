@@ -5,7 +5,18 @@ a {
   color: #111111; }
 
 .navbar-item img {
-  max-height: 100px;
-  max-width: 100px; }
+  max-height: 64px; }
+
+.table tr td.link {
+  position: relative; }
+  .table tr td.link p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: absolute;
+    left: 1rem;
+    top: 0.8rem;
+    z-index: 10;
+    width: 100%; }
 
 /*# sourceMappingURL=style.css.map */
