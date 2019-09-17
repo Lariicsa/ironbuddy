@@ -2,6 +2,7 @@ const User = require('../models/User')
 const Resource = require('../models/Resource')
 const passport = require('passport')
 
+
 exports.signupForm = (req, res) => {
   res.render('auth/signup')
 }
@@ -26,7 +27,7 @@ exports.loginForm = (req, res) => {
 exports.login = (req, res, next)=>{
   passport.authenticate('local', (err, user)=>{
     req.app.locals.user = user
-    //console.log('login',user)
+
     req.logIn(user, err =>{
       return res.redirect('/profile')
     } )

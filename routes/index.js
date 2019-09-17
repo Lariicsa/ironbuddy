@@ -1,5 +1,5 @@
 const express = require('express')
-const { getProfile, editProfile, editProfileForm, getResource, addResourceForm, addResource } = require('../controllers/profileController')
+const { getProfile, editProfile, editProfileForm, getResource, addResourceForm, addResource, getResourceView } = require('../controllers/profileController')
 const catchErrors = require('../middlewares/catchErrors')
 const isLoggedIn = require('../middlewares/isLoggedIn')
 const router = express.Router()
@@ -20,5 +20,7 @@ router.get('/profile/resources', isLoggedIn('/auth/login'), getResource)
 
 router.get('/profile/addresources', isLoggedIn('/auth/login'), addResourceForm)
 router.post('/profile/addresources', isLoggedIn('/auth/login'), catchErrors(addResource))
+
+router.get('/profile/resource', isLoggedIn('/auth/login'), getResourceView)
 
 module.exports = router

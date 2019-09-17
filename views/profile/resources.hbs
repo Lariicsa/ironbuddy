@@ -5,10 +5,10 @@
 		<div class="box">
 			<p>{{user.name}}</p>
 			<hr>
-			<table class="table is-striped is-fullwidth">
+		
+			<table class="table is-striped is-fullwidth is-hoverable">
 				<thead>
 					<tr>
-						<th><abbr></abbr></th>
 						<th>Nombre</th>
 						<th><abbr>Link</abbr></th>
 						<th></th>
@@ -17,9 +17,9 @@
 				<tbody>
 					{{#each resources }}
 					<tr>
-						<td></td>
 						<td>{{this.name}}</td>
-						<td class="link"><p>{{this.url}}</p></td>
+						<td class="link"><a class="clic" href="{{this.url}}" target="_blank">{{this.url}}</a></td>
+						<td><a href="/profile/resource?resourceid={{_id}}">ver recurso</a></td>
 					</tr>
 					{{/each}}
 				</tbody>

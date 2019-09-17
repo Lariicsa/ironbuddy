@@ -28,13 +28,6 @@ exports.getResource = async (req, res) => {
   res.render('profile/resources', {resources, user})
 }
 
-// router.get("/", isLoggedIn, async(req, res) => {
-//   const posts = await Post.find().populate('creator')
-//   res.render('index',{ posts } );
-// })
-
-
-
 exports.addResource = async (req, res) => {
   const { name, url } = req.body
   const user = req.session
@@ -48,4 +41,11 @@ exports.addResource = async (req, res) => {
 
 exports.addResourceForm = async (req, res) => {
   res.render('profile/addresources')
+}
+
+
+exports.getResourceView = async (req, res) => {
+  const { resourceid } = req.query
+  const resource = await Resource.findById(resourceid)
+  res.render('profile/resource', resource)
 }
