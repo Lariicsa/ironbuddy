@@ -1,5 +1,6 @@
 const User = require('../models/User')
 const Profile = require('../models/Profile')
+const passport = require('passport')
 
 exports.signupForm = (req, res) => {
   res.render('auth/signup')
@@ -20,14 +21,20 @@ exports.signup = async (req, res) => {
 
 
 exports.loginForm = (req, res) => {
-  res.render('auth/login')
+  res.render('auth/login', { action: 'Login' })
 }
 
-exports.login = (req, res) => {
-  res.redirect('/profile')
+exports.login = (req, res, next)=>{
+  passport.authenticate('local', (err, user)=>{
+    req.app.locals.user = user
+    req.logIn(user, err =>{
+      return res.redirect('/profile')
+    } )
+  })(req, res, next)
 }
 
 exports.logout = (req, res) => {
   req.logout()
+  delete req.app.locals.user
   res.redirect('/auth/login')
 }
