@@ -1,8 +1,5 @@
 const express = require('express')
-const {
-  showProfile,
-  updateProfile
-} = require('../controllers/profileController')
+const { getProfile, editProfile, editProfileForm } = require('../controllers/profileController')
 const catchErrors = require('../middlewares/catchErrors')
 const isLoggedIn = require('../middlewares/isLoggedIn')
 const router = express.Router()
@@ -13,14 +10,12 @@ const User = require('../models/User')
 /* GET home page */
 router.get('/', async (req, res, next) => {
   res.render('index');
-});
+})
 
-router.get('/profile', isLoggedIn('/auth/login'), catchErrors(showProfile))
-router.post(
-  '/profile/edit',
-  uploadCloud.single('photo'),
-  catchErrors(updateProfile)
-)
+router.get('/profile', isLoggedIn('/auth/login'), getProfile)
+router.get('/profile/edit', isLoggedIn('/auth/login'), editProfileForm)
+
+router.post('/profile/edit', isLoggedIn('/auth/login'), catchErrors(editProfile))
 
 
 module.exports = router
