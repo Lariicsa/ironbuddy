@@ -19,7 +19,6 @@ exports.signup = async (req, res) => {
   })
 }
 
-
 exports.loginForm = (req, res) => {
   res.render('auth/login', { action: 'Login' })
 }
