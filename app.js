@@ -13,7 +13,7 @@ const session = require('express-session')
 const MongoStore = require('connect-mongo')(session)
 
 mongoose
-  .connect('mongodb://localhost/ironbuddy', {
+  .connect(process.env.DB, {
     useNewUrlParser: true
   })
   .then(x => {
@@ -43,7 +43,7 @@ app.use(cookieParser())
 app.use(
   session({
     secret: process.env.SECRET,
-    cookie: {maxAge: 60000},
+    cookie: {maxAge: 120000},
     resave: false,
     saveUninitialized: false,
     store: new MongoStore({

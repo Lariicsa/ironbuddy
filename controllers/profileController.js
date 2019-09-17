@@ -14,8 +14,10 @@ exports.editProfileForm  = async (req, res) => {
 
 exports.editProfile = async (req,res ) => {
   const { name, lastname, email, password } = req.body
+  const {url: img} = req.file
   const { userid } = req.query
-  await User.findByIdAndUpdate(userid, { name, lastname, email, password })
+  await User.findByIdAndUpdate(userid, { name, lastname, email, password, img })
+  console.log('editprofile',userid)
   res.redirect('/profile')
 }
 

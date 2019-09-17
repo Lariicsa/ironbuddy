@@ -2,12 +2,14 @@
 	<div class="column is-half">
 		<hr>
 		<div class="box">
-			<img src="{{this.img}}" alt="">
+			<figure>
+				<img class="is-rounded" src="{{this.img}}" alt="">
+			</figure>
 			<p>{{this.name}}</p>
 			<p>{{this.lastname}}</p>
 			<p>{{this.email}}</p>
 
-			<a class="button is-text" href="/profile/edit?userid={{this._id}}">Edit</a>
+			<a class="button is-text is-info" href="/profile/edit?userid={{this._id}}">Edit Profile</a>
 			<hr>
 			<a class="button is-text" href="/profile/resources">Resources</a>
 		</div>
