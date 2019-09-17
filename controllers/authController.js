@@ -1,5 +1,5 @@
 const User = require('../models/User')
-const Profile = require('../models/Profile')
+const Resource = require('../models/Resource')
 const passport = require('passport')
 
 exports.signupForm = (req, res) => {
@@ -9,9 +9,9 @@ exports.signupForm = (req, res) => {
 exports.signup = async (req, res) => {
   const {email, password, name, lastname} = req.body
 
-  //console.log(req.body)
-  const profile = await Profile.create({})
-  User.register(new User({email, profile, name, lastname}), password, function(err, account) {
+  console.log(req.body)
+  //const resource = await Resource.create({})
+  User.register(new User({email, name, lastname}), password, function(err, account) {
     if (err) {
       return res.json(err)
     }
