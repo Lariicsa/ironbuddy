@@ -26,6 +26,7 @@ exports.loginForm = (req, res) => {
 exports.login = (req, res, next)=>{
   passport.authenticate('local', (err, user)=>{
     req.app.locals.user = user
+    //console.log('login',user)
     req.logIn(user, err =>{
       return res.redirect('/profile')
     } )
