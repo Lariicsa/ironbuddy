@@ -12,7 +12,7 @@ const userSchema = new Schema(
       enum: ['ADMIN', 'USER'],
       default: 'USER'
     },
-    profile: {
+    resource: {
       ref: 'Resource',
       type: Schema.Types.ObjectId
     },

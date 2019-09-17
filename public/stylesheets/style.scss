@@ -5,8 +5,24 @@ body {
 a {
   color: #111111;
 }
-.navbar-item img{
-  
-  max-height: 100px;
-  max-width: 100px
+
+.navbar-item {
+  img {
+    max-height: 64px;
+  }
+}
+
+.table tr td.link {
+  position: relative;
+
+  p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: absolute;
+    left: 1rem;
+    top: 0.8rem;
+    z-index: 10;
+    width: 100%;
+  }
 }

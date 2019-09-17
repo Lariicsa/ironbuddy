@@ -3,7 +3,10 @@
 		<h1 class="title is-2">You're gonna edit your profile</h1>
 		<hr>
 		<div class="box">
-			<form action="/profile/edit?userid={{_id}}" method="POST">
+			<form action="/profile/edit?userid={{_id}}" method="POST" enctype="multipart/form-data">
+
+				<input type="file" name="photo">
+
 				<div class="field">
 					<label class="label">Name</label>
 					<div class="control">
