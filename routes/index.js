@@ -5,12 +5,18 @@ const isLoggedIn = require('../middlewares/isLoggedIn')
 const router = express.Router()
 const uploadCloud = require('../config/cloudinary')
 const User = require('../models/User')
+const {getDashboard} = require('../controllers/authController')
 
 
 /* GET home page */
-router.get('/', async (req, res, next) => {
+/* router.get('/', async (req, res, next) => {
   res.render('index');
-})
+}) */
+
+//index dashboard 
+router.get('/', isLoggedIn('/auth/login'), getDashboard)
+
+
 
 router.get('/profile', isLoggedIn('/auth/login'), getProfile)
 router.get('/profile/edit', isLoggedIn('/auth/login'), editProfileForm)

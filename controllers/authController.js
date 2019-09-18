@@ -37,3 +37,10 @@ exports.logout = (req, res) => {
   delete req.app.locals.user
   res.redirect('/auth/login')
 }
+
+exports.getDashboard = async (req, res) => {
+  const user = await User.findById(req.user._id).populate('resourcd')
+  res.render('index', user)
+}
+
+

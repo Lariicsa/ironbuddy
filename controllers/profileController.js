@@ -1,5 +1,6 @@
 const User = require('../models/User')
 const Resource = require('../models/Resource')
+const passport = require('passport')
 
 exports.getProfile  = async (req, res) => {
   const user = await User.findById(req.user._id).populate('resource')
