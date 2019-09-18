@@ -34,4 +34,7 @@ router.get('/profile/resource', isLoggedIn('/auth/login'), getResourceView)
 
 router.post('/profile/resource/:id/comment', uploadCloud.single('commentImg'), isLoggedIn('/auth/login'), catchErrors(addComment))
 
+//router.get('/delete/', catchErrors(deleteProduct))
+
+
 module.exports = router
