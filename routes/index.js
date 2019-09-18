@@ -26,6 +26,7 @@ router.get('/profile/resource', isLoggedIn('/auth/login'), getResourceView)
 router.post('/profile/resource/:id/comment', uploadCloud.single('commentImg'), isLoggedIn('/auth/login'), catchErrors(addComment))
 
 router.get('/profile/resources', isLoggedIn('/auth/login'), getResource)
+
 //router.get('/delete/', catchErrors(deleteProduct))
 
 
