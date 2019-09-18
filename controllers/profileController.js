@@ -1,23 +1,23 @@
 const User = require('../models/User')
 const Resource = require('../models/Resource')
-const passport = require('passport')
 
 exports.getProfile  = async (req, res) => {
   const user = await User.findById(req.user._id).populate('resource')
+  console.log(user)
   res.render('profile', user)
 }
 
 exports.editProfileForm  = async (req, res) => {
   const { userid } = req.query
   const user = await User.findById(userid).populate('resource')
+  console.log(user)
   res.render('profile/edit', user)
 }
 
 exports.editProfile = async (req,res ) => {
   const { name, lastname, email, password } = req.body
-  const {url: img} = req.file
   const { userid } = req.query
-  await User.findByIdAndUpdate(userid, { name, lastname, email, password, img })
+  await User.findByIdAndUpdate(userid, { name, lastname, email, password })
   console.log('editprofile',userid)
   res.redirect('/profile')
 }
@@ -29,6 +29,12 @@ exports.getResource = async (req, res) => {
   res.render('profile/resources', {resources, user})
 }
 //* se agregó user=req.user
+//Resource.find me va a traer todo lo de todos 
+
+// router.get("/", isLoggedIn, async(req, res) => {
+//   const posts = await Post.find().populate('creator')
+//   res.render('index',{ posts } );
+// })
 
 exports.addResource = async (req, res) => {
   const { name, url } = req.body
@@ -57,10 +63,9 @@ exports.getResourceView = async (req, res) => {
   //   userData = { id: false, login: false }
   // }
   //console.log(userData);
-  const {img} = req.user
   const { resourceid } = req.query
   const resource = await Resource.findById(resourceid).populate({path: 'comments.creator', model: 'User'})
-  
+  resource.user = req.user
   console.log(`resource ${resource}`);
   
   res.render('profile/resource', resource)
