@@ -48,7 +48,6 @@ exports.addResourceForm = async (req, res) => {
 
 exports.getResourceView = async (req, res) => {
   console.log('usr',req.user.name)
-
   // const allResources = await Resource.find().populate('creator comments.creator')
   // let userData = ''
   // if (req.user.name) {
@@ -77,11 +76,3 @@ exports.addComment = async (req, res, next) => {
   const getResource = await Resource.findByIdAndUpdate({ _id: id }, { $push: { comments: { creator: req.user.id, comment, picName, picPath} } })
   res.redirect(`/profile/resource?resourceid=${getResource._id}`)
 }
-//puede ser con un if?
-
-//eliminar comentario
-/* exports.deleteComment = async (req, res) => {
-  const {id} = req.params
-  await Resource.findByIdAndDelete(id)
-  res.redirect(`/profile/resource?resourceid=${getResource._id}`)
-} */
