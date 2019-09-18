@@ -25,13 +25,14 @@ exports.editProfile = async (req,res ) => {
 exports.getResource = async (req, res) => {
   const resources = await Resource.find().populate('user')
   const user = req.user
-    console.log('usr', user)
+  console.log('usr', user)
   res.render('profile/resources', {resources, user})
 }
+//* se agregó user=req.user
 
 exports.addResource = async (req, res) => {
   const { name, url } = req.body
-  const user = req.session
+  const user = req.session.currentUser
   await Resource.create({
     name,
     url,
