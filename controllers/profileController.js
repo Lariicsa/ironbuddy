@@ -24,10 +24,12 @@ exports.editProfile = async (req,res ) => {
 
 exports.getResource = async (req, res) => {
   const resources = await Resource.find().populate('user')
-  console.log('getResource',resources)
-  res.render('profile/resources', {resources})
+  const user = req.user
+  console.log('usr', user)
+  res.render('profile/resources', {resources, user})
 }
-
+//* se agregó user=req.user
+//Resource.find me va a traer todo lo de todos 
 
 // router.get("/", isLoggedIn, async(req, res) => {
 //   const posts = await Post.find().populate('creator')
@@ -37,7 +39,6 @@ exports.getResource = async (req, res) => {
 exports.addResource = async (req, res) => {
   const { name, url } = req.body
   const user = req.session.currentUser
-
   await Resource.create({
     name,
     url,
@@ -48,4 +49,35 @@ exports.addResource = async (req, res) => {
 
 exports.addResourceForm = async (req, res) => {
   res.render('profile/addresources')
+}
+
+
+exports.getResourceView = async (req, res) => {
+  console.log('usr',req.user.name)
+  // const allResources = await Resource.find().populate('creator comments.creator')
+  // let userData = ''
+  // if (req.user.name) {
+  //   const { _id: id } = req.user
+  //   userData = { id, login: true }
+  // } else {
+  //   userData = { id: false, login: false }
+  // }
+  //console.log(userData);
+  const { resourceid } = req.query
+  const resource = await Resource.findById(resourceid).populate({path: 'comments.creator', model: 'User'})
+  resource.user = req.user
+  console.log(`resource ${resource}`);
+  
+  res.render('profile/resource', resource)
+  
+}
+
+exports.addComment = async (req, res, next) => {
+  const { id } = req.params
+  
+  const { comment } = req.body
+  const { originalname: picName, url: picPath } = req.file
+  
+  const getResource = await Resource.findByIdAndUpdate({ _id: id }, { $push: { comments: { creator: req.user.id, comment, picName, picPath} } })
+  res.redirect(`/profile/resource?resourceid=${getResource._id}`)
 }

@@ -1,11 +1,15 @@
 body {
-  font: 16px "Lucida Grande", Helvetica, Arial, sans-serif; }
+  font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
+  color: #1E2434; }
 
 a {
   color: #111111; }
 
 .navbar-item img {
-  max-height: 64px; }
+  max-height: 80px; }
+
+.section {
+  background-color: #F6F7F7; }
 
 .table tr td.link,
 .link {
@@ -21,5 +25,59 @@ a {
     top: 0.8rem;
     z-index: 10;
     width: 100%; }
+
+.circle {
+  display: inline-block;
+  border-radius: 100%;
+  height: auto; }
+  .circle-48 {
+    height: 48px;
+    width: 48px; }
+
+.picture {
+  background-position: center;
+  background-size: cover;
+  border-radius: 100%;
+  box-shadow: 0 2px 2px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 48px;
+  width: 48px; }
+  .picture.x2 {
+    height: 56px;
+    width: 56px; }
+  .picture.x4 {
+    box-shadow: 0 4px 4px #23C2FF, 0 0 0 4px #23C2FF;
+    margin: auto;
+    height: 88px;
+    width: 88px; }
+
+a.picture:hover {
+  box-shadow: 0 4px 4px #23C2FF, 0 0 0 4px #23C2FF; }
+
+a.box {
+  position: relative;
+  bottom: 0; }
+  a.box:hover, a.box:focus {
+    box-shadow: 0 2px 2px rgba(8, 8, 8, 0.1), 0 0 0 1px rgba(8, 8, 8, 0.1);
+    bottom: 2px;
+    border: 0; }
+
+.is-blue {
+  border: 0;
+  background-color: rgba(35, 194, 255, 0.32);
+  color: #3C97CB; }
+  .is-blue:hover {
+    background-color: #23C2FF;
+    color: white; }
+
+.name {
+  margin-top: 10%;
+  font-size: 18px;
+  text-transform: capitalize;
+  text-align: center;
+  font-weight: bold; }
 
 /*# sourceMappingURL=style.css.map */

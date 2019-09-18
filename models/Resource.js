@@ -7,7 +7,17 @@ const resourceSchema = new Schema(
     user: {
       type: Schema.Types.ObjectId,
       ref: 'User',
-    }
+    },
+    comments: [
+      {
+        creator: {
+          ref: 'User',
+          type: Schema.Types.ObjectId
+        },
+        comment: String,
+        picPath: String
+      }
+    ]
   },
   {
     timestamps: {

@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 <body>
-<nav class="navbar is-light">
+<nav class="navbar">
   <div class="navbar-brand">
     <a class="navbar-item" href="/">
     <img src="/images/ironhack-logo.png" alt="ironhack-logo">
@@ -25,7 +25,7 @@
   <div id="navbarExampleTransparentExample" class="navbar-menu">
     <div class="navbar-start">
       <a class="navbar-item" href="/">
-        Home
+        Summary
       </a>
       <a class="navbar-item" href="/profile">
           Profile
@@ -75,6 +75,12 @@
             <a class="button is-text" href="/auth/logout">
               <span>Log out</span>
             </a>
+          </li>
+          <li class="control">
+            <p>{{user.name}} {{user.lastname}} </p>
+          </li>
+          <li class="control">
+              <a href="/profile" class="picture" style="background-image: url('{{user.img}}')"></a>
           </li>
           {{/unless}}
         </ul>
