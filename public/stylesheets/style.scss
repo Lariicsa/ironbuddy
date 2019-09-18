@@ -12,10 +12,12 @@ a {
   }
 }
 
-.table tr td.link {
+.table tr td.link,
+.link {
   position: relative;
 
-  p {
+  a {
+    color: #3273dc;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

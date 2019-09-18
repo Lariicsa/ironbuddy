@@ -3,21 +3,23 @@
 		<h3 class="title is-4">Resources</h3>
 		<hr>
 		<div class="box">
-			<table class="table is-striped is-fullwidth">
+			<p>{{user.name}}</p>
+			<hr>
+		
+			<table class="table is-striped is-fullwidth is-hoverable">
 				<thead>
 					<tr>
-						<th><abbr></abbr></th>
 						<th>Nombre</th>
 						<th><abbr>Link</abbr></th>
-						<th>...</th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
 					{{#each resources }}
 					<tr>
-						<td></td>
 						<td>{{this.name}}</td>
-						<td class="link"><p>{{this.url}}</p></td>
+						<td class="link"><a class="clic" href="{{this.url}}" target="_blank">{{this.url}}</a></td>
+						<td><a href="/profile/resource?resourceid={{_id}}">ver recurso</a></td>
 					</tr>
 					{{/each}}
 				</tbody>
