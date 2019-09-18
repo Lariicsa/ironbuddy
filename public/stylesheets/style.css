@@ -7,9 +7,12 @@ a {
 .navbar-item img {
   max-height: 64px; }
 
-.table tr td.link {
+.table tr td.link,
+.link {
   position: relative; }
-  .table tr td.link p {
+  .table tr td.link a,
+  .link a {
+    color: #3273dc;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
