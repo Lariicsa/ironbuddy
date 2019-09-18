@@ -33,15 +33,15 @@ exports.signup = async (req, res) => {
 
     To verify this email direcction please go to this link:
 
-    <a href="http://localhost:${process.env.PORT}/profile/verify/${confirmationCode}">
-      http://localhost:${process.env.PORT}/profile/verify/${confirmationCode}
+    <a href="http://localhost:${process.env.PORT}/auth/profile/verify/${confirmationCode}">
+      Confirmation link
     </a>
   `;
 
   await transport.sendMail({
     from: `"IronBuddy" <${process.env.EMAIL}>`,
     to: email,
-    subject: 'Welcome to IronBuddy plattform',
+    subject: 'Welcome to IronBuddy plattform!',
     text,
     html: `<h1>Just clic to verify your account</h1>
       <p>${text}</p>
@@ -53,6 +53,8 @@ exports.signup = async (req, res) => {
 exports.verifyAccount = async (req, res) => {
   const { code } = req.params;
   const user = await User.findById(req.user.id);
+  console.log('elusr', user);
+  
   console.log(code);
   console.log(user.confirmationCode);
   if (code === user.confirmationCode) {
@@ -78,12 +80,12 @@ exports.resetVerifyCode = async (req, res) => {
     user.confirmationCode = jwt.sign({ email: user.email }, process.env.SECRET);
     const text = `
     You are reciving this message because this email was used to sign up on
-    a very simple webapp.
+    IronBuddy Platform
 
     To verify this email direcction please go to this link:
 
-    <a href="http://localhost:${process.env.PORT}/profile/verify/${user.confirmationCode}">
-      http://localhost:${process.env.PORT}/profile/verify/${user.confirmationCode}
+    <a href="http://localhost:${process.env.PORT}/auth/profile/verify/${user.confirmationCode}">
+    Confirmation link
     </a>
   `;
 
