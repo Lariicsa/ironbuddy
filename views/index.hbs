@@ -1,7 +1,7 @@
 <p>Welcome to {{title}}</p>
 
-<div class="columns is-desktop is-centered">
-	<div class="column is-half">
+<div class="columns">
+	<div class="column is-two-fifths">
 		<hr>
 		<div class="box">
 			<figure>
@@ -9,7 +9,20 @@
 			</figure>
 			<p>{{this.name}}</p>
 			<p>{{this.lastname}}</p>
-			<button type="submit">Ir a perfil </button>
+			
+			<a class="button is-text is-info" href="/profile">Ir a perfil</a>
+		</div>
+	</div>
+
+	<div class="column is-two-fifths">
+		<hr>
+		<div class="box">
+			<figure>
+				<img src="" alt="">
+			</figure>
+			<p>Resources</p>
+			<a class="button is-text is-info" href="/profile/resources">Resources</a>
+
 		</div>
 	</div>
 </div>

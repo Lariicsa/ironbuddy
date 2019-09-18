@@ -29,7 +29,7 @@ exports.login = (req, res, next)=>{
     req.app.locals.user = user
 
     req.logIn(user, err =>{
-      return res.redirect('/profile')
+      return res.redirect('/')
     } )
   })(req, res, next)
 }
