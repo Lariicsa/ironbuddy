@@ -2,7 +2,6 @@ const User = require('../models/User')
 const Resource = require('../models/Resource')
 const passport = require('passport')
 
-
 exports.signupForm = (req, res) => {
   res.render('auth/signup')
 }
@@ -29,7 +28,7 @@ exports.login = (req, res, next)=>{
     req.app.locals.user = user
 
     req.logIn(user, err =>{
-      return res.redirect('/profile')
+      return res.redirect('/')
     } )
   })(req, res, next)
 }
@@ -41,7 +40,7 @@ exports.logout = (req, res) => {
 }
 
 exports.getDashboard = async (req, res) => {
-  const user = await User.findById(req.user._id).populate('resourcd')
+  const user = await User.findById(req.user._id).populate('resource')
   res.render('index', user)
 }
 
