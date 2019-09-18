@@ -21,7 +21,7 @@
 		<div class="box">
 			{{#each comments as |comment|}}
           <div class="comment-user">
-            <img src="{{comment.creator.profilePicPath}}" alt="{{comment.creator.profilePic}}" width="40px"><span class="comment-username">{{comment.creator.username}}</span>
+            <img src="{{comment.creator.img}}" alt="{{comment.creator.img}}" width="40px"><span class="comment-username">{{comment.creator.name}}</span>
           </div>
           <div class="comment-content">
             <p class="comment-text">{{comment.comment}}</p>

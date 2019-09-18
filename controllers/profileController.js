@@ -68,5 +68,5 @@ exports.addComment = async (req, res, next) => {
   const { comment } = req.body
   const { originalname: picName, url: picPath } = req.file
   const getResource = await Resource.findByIdAndUpdate({ _id: id }, { $push: { comments: { creator: req.user.id, comment, picName, picPath } } })
-  res.redirect('/profile/resource')
+  res.redirect('/profile/resources')
 }
