@@ -19,7 +19,13 @@ const userSchema = new Schema(
     img: {
       type: String,
       default: 'https://www.sutterhealth.org/assets/img/dr-profiles/default-dr-profile.png'
-    }
+    },
+    confirmationCode: String,
+    status: {
+      type: String,
+      enum: ['Pending Confirmation', 'Active'],
+      default: 'Pending Confirmation',
+    },
   },
   {
     timestamps: {

@@ -5,7 +5,13 @@
 			<div class="picture x4 " style="background-image: url('{{this.img}}')"></div>
 			<div class="columns is-mobile is-centered">
 				<div class="column">
-					<p class="subtitle is-6 name">{{this.name}}  {{this.lastname}}</p>
+					<p><b>Status: </b>{{status}}</p>
+					{{#if confirmationCode}}
+					<div>
+						<p>Didn't recived a verification email? <a class="button is-text" href="/profile/reset-code">Send again</a></p>
+					</div>
+					{{/if}}
+					<p class="subtitle is-6 name">{{this.name}} {{this.lastname}}</p>
 					<a class="button is-blue is-fullwidth" href="/profile">View info</a>
 				</div>
 			</div>
@@ -18,4 +24,3 @@
 		<div class="box"></div>
 	</div>
 </div>
-

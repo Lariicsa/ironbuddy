@@ -29,6 +29,9 @@ router.post('/profile/addresources', isLoggedIn('/auth/login'), catchErrors(addR
 
 router.get('/profile/resource', isLoggedIn('/auth/login'), getResourceView)
 
+
+
+
 router.post('/profile/resource/:id/comment', uploadCloud.single('commentImg'), isLoggedIn('/auth/login'), catchErrors(addComment))
 
 module.exports = router
