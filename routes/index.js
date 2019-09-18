@@ -8,7 +8,7 @@ const User = require('../models/User')
 
 
 /* GET home page */
-router.get('/', async (req, res, next) => {
+router.get('/', isLoggedIn('/auth/login'), async (req, res, next) => {
   res.render('index');
 })
 
