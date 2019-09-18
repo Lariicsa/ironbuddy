@@ -1,28 +1,21 @@
-<p>Welcome to {{title}}</p>
-
-<div class="columns">
-	<div class="column is-two-fifths">
-		<hr>
+<div class="columns is-multiline is-mobile is-centered">
+	<div class="column is-one-third">
 		<div class="box">
-			<figure>
-				<img class="is-rounded" src="{{this.img}}" alt="">
-			</figure>
-			<p>{{this.name}}</p>
-			<p>{{this.lastname}}</p>
-			
-			<a class="button is-text is-info" href="/profile">Ir a perfil</a>
+			<span class="title is-5">My profile</span>
+			<div class="picture x4 " style="background-image: url('{{this.img}}')"></div>
+			<div class="columns is-mobile is-centered">
+				<div class="column">
+					<p class="subtitle is-6 name">{{this.name}}  {{this.lastname}}</p>
+					<a class="button is-blue is-fullwidth" href="/profile">View info</a>
+				</div>
+			</div>
 		</div>
 	</div>
-
-	<div class="column is-two-fifths">
-		<hr>
-		<div class="box">
-			<figure>
-				<img src="" alt="">
-			</figure>
-			<p>Resources</p>
-			<a class="button is-text is-info" href="/profile/resources">Resources</a>
-
-		</div>
+	<div class="column is-one-third">
+		<div class="box"></div>
+	</div>
+	<div class="column is-one-third">
+		<div class="box"></div>
 	</div>
 </div>
+

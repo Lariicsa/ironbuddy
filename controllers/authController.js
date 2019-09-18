@@ -2,7 +2,6 @@ const User = require('../models/User')
 const Resource = require('../models/Resource')
 const passport = require('passport')
 
-
 exports.signupForm = (req, res) => {
   res.render('auth/signup')
 }

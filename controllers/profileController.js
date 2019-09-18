@@ -46,7 +46,27 @@ exports.addResourceForm = async (req, res) => {
 
 
 exports.getResourceView = async (req, res) => {
+  console.log('usr',req.user.name)
+
+  // const allResources = await Resource.find().populate('creator comments.creator')
+  // let userData = ''
+  // if (req.user.name) {
+  //   const { _id: id } = req.user
+  //   userData = { id, login: true }
+  // } else {
+  //   userData = { id: false, login: false }
+  // }
+  //console.log(userData);
+
   const { resourceid } = req.query
   const resource = await Resource.findById(resourceid)
   res.render('profile/resource', resource)
+}
+
+exports.addComment = async (req, res, next) => {
+  const { id } = req.params
+  const { comment } = req.body
+  const { originalname: picName, url: picPath } = req.file
+  const getResource = await Resource.findByIdAndUpdate({ _id: id }, { $push: { comments: { creator: req.user.id, comment, picName, picPath } } })
+  res.redirect('/profile/resources')
 }

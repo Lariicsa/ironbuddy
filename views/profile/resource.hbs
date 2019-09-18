@@ -7,7 +7,27 @@
 			<p>{{this.name}}</p>
 			<p class="link"><a href="{{this.url}}">{{this.url}}</a></p>
 			<hr>
-			<textarea class="textarea" placeholder="Your comment here"></textarea>
+			<form action="/profile/resource/{{_id}}/comment" method="POST" enctype="multipart/form-data">
+			<input type="file" name="commentImg" class="comment-file">
+			<textarea class="textarea" placeholder="Your comment here" name="comment"></textarea>
+			
+			<input type="submit" value="Respond" class="button is-info">
+			</form>
+		</div>
+	</div>
+</div>
+<div class="columns">
+	<div class="column">
+		<div class="box">
+			{{#each comments as |comment|}}
+          <div class="comment-user">
+            <img src="{{comment.creator.img}}" alt="{{comment.creator.img}}" width="40px"><span class="comment-username">{{comment.creator.name}}</span>
+          </div>
+          <div class="comment-content">
+            <p class="comment-text">{{comment.comment}}</p>
+            <img class="comment-img" src="{{comment.picPath}}" alt="{{comment.picName}}" width="300px">
+          </div>
+          {{/each}}
 		</div>
 	</div>
 </div>
