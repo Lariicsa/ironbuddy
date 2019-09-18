@@ -40,7 +40,7 @@ exports.logout = (req, res) => {
 }
 
 exports.getDashboard = async (req, res) => {
-  const user = await User.findById(req.user._id).populate('resourcd')
+  const user = await User.findById(req.user._id).populate('resource')
   res.render('index', user)
 }
 

@@ -20,8 +20,10 @@
 	<div class="column">
 		<div class="box">
 			{{#each comments as |comment|}}
+				
           <div class="comment-user">
-            <img src="{{comment.creator.img}}" alt="{{comment.creator.img}}" width="40px"><span class="comment-username">{{comment.creator.name}}</span>
+            <img src="{{comment.creator.img}}" alt="{{comment.creator.img}}" width="60px"/>
+						<span class="comment-username">{{comment.creator.name}} {{comment.creator.lastname}}</span>
           </div>
           <div class="comment-content">
             <p class="comment-text">{{comment.comment}}</p>
@@ -31,3 +33,4 @@
 		</div>
 	</div>
 </div>
+

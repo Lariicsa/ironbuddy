@@ -57,16 +57,30 @@ exports.getResourceView = async (req, res) => {
   //   userData = { id: false, login: false }
   // }
   //console.log(userData);
-
+  const {img} = req.user
   const { resourceid } = req.query
-  const resource = await Resource.findById(resourceid)
+  const resource = await Resource.findById(resourceid).populate({path: 'comments.creator', model: 'User'})
+  
+  console.log(`resource ${resource}`);
+  
   res.render('profile/resource', resource)
+  
 }
 
 exports.addComment = async (req, res, next) => {
   const { id } = req.params
+  
   const { comment } = req.body
   const { originalname: picName, url: picPath } = req.file
-  const getResource = await Resource.findByIdAndUpdate({ _id: id }, { $push: { comments: { creator: req.user.id, comment, picName, picPath } } })
-  res.redirect('/profile/resources')
+  
+  const getResource = await Resource.findByIdAndUpdate({ _id: id }, { $push: { comments: { creator: req.user.id, comment, picName, picPath} } })
+  res.redirect(`/profile/resource?resourceid=${getResource._id}`)
 }
+//puede ser con un if?
+
+//eliminar comentario
+/* exports.deleteComment = async (req, res) => {
+  const {id} = req.params
+  await Resource.findByIdAndDelete(id)
+  res.redirect(`/profile/resource?resourceid=${getResource._id}`)
+} */
