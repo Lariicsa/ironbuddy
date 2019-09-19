@@ -31,27 +31,6 @@
           Profile
       </a>
     </div>
-
-    {{!-- <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="field is-grouped">
-          <p class="control">
-            <a class="button is-text" data-social-action="tweet" data-social-target="http://localhost:4000" href="/auth/login">
-              <span>
-                Log In
-              </span>
-            </a>
-          </p>
-          <p class="control">
-            <a class="button is-text" href="/auth/logout">
-              <span>Log out</span>
-            </a>
-          </p>
-        </div>
-      </div>
-    </div> --}}
-  
-  
     <div class="navbar-end">
       <div class="navbar-item">
         <ul class="field is-grouped">
@@ -77,7 +56,7 @@
             </a>
           </li>
           <li class="control">
-            <p>{{user.name}} {{user.lastname}} </p>
+            <p>Hello, <strong>{{user.name}}</strong> </p>
           </li>
           <li class="control">
               <a href="/profile" class="picture" style="background-image: url('{{user.img}}')"></a>
