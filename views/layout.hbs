@@ -14,6 +14,20 @@
 <body>
 
   <nav class="navbar" role="navigation" aria-label="main navigation">
+
+    {{#if isAdmin}}
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/auth/admin">
+        <img src="/images/ironbuddy-logo-03.svg" width="168">
+      </a>
+
+      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    {{else}}
     <div class="navbar-brand">
       <a class="navbar-item" href="/">
         <img src="/images/ironbuddy-logo-03.svg" width="168">
@@ -25,12 +39,16 @@
         <span aria-hidden="true"></span>
       </a>
     </div>
+    {{/if}}
+
+
+
 
    {{#if user }}
    <div id="navbarBasicExample" class="navbar-menu"></div>
     {{#if isAdmin}}
       <div class="navbar-start">
-        <a href="/" class="navbar-item">
+        <a href="/auth/add-user" class="navbar-item">
           Add User
         </a>
         <a href="/profile/resources" class="navbar-item">
@@ -47,21 +65,14 @@
           Resources
         </a>
       </div>
-
-
     {{/if}}
 
     
-      
-
       <div class="navbar-end">
         <div class="navbar-item">
           
           <div class="buttons">
-            
-           
-            
-
+    
             <div class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link picture" style="background-image: url('{{user.img}}')"></a>
               <div class="navbar-dropdown profile">

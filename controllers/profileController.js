@@ -22,6 +22,7 @@ exports.editProfile = async (req, res, next) => {
   } else {
     const { url: img } = req.file
     await User.findByIdAndUpdate(userid, { name, lastname, img })
+    req.app.locals.user.img = img
   }
   res.redirect('/profile')
 }
