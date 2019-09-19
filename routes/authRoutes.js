@@ -5,10 +5,8 @@ const {
   loginForm, 
   login, 
   logout,
-  //getDashboard,
 verifyAccount,
 resetVerifyCode } = require('../controllers/authController')
-//const { showProfile } = require('../controllers/profileController')
 const catchErrors = require('../middlewares/catchErrors')
 const isLoggedOut = require('../middlewares/isLoggedOut')
 const isLoggedIn = require('../middlewares/isLoggedIn')
@@ -26,10 +24,6 @@ router.get('/logout', logout)
 
 router.get('/profile/verify/:code', isLoggedIn('/auth/login'), catchErrors(verifyAccount));
 router.get('/profile/reset-code', isLoggedIn('/auth/login'), catchErrors(resetVerifyCode));
-
-/* //index dashboard 
-router.get('/', isLoggedIn('/auth/login'), getDashboard) */
-
 
 
 module.exports = router

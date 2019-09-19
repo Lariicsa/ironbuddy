@@ -14,10 +14,10 @@ exports.editProfileForm  = async (req, res) => {
 }
 
 exports.editProfile = async (req,res ) => {
-  const { name, lastname, email, password } = req.body
+  const { name, lastname } = req.body
   const {url: img} = req.file
   const { userid } = req.query
-  await User.findByIdAndUpdate(userid, { name, lastname, email, password, img })
+  await User.findByIdAndUpdate(userid, { name, lastname, img })
   console.log('editprofile',userid)
   res.redirect('/profile')
 }
@@ -47,22 +47,10 @@ exports.addResourceForm = async (req, res) => {
 
 
 exports.getResourceView = async (req, res) => {
-  console.log('usr',req.user.name)
-  // const allResources = await Resource.find().populate('creator comments.creator')
-  // let userData = ''
-  // if (req.user.name) {
-  //   const { _id: id } = req.user
-  //   userData = { id, login: true }
-  // } else {
-  //   userData = { id: false, login: false }
-  // }
-  //console.log(userData);
   const {img} = req.user
   const { resourceid } = req.query
   const resource = await Resource.findById(resourceid).populate({path: 'comments.creator', model: 'User'})
-  
-  console.log(`resource ${resource}`);
-  
+  resource.user = req.user
   res.render('profile/resource', resource)
   
 }

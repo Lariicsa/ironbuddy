@@ -14,10 +14,9 @@ body {
 a {
   color: #111111;
 }
-
-.navbar-item {
+.navbar-brand {
   img {
-    max-height: 80px;
+    max-height: 4.8rem;
   }
 }
 .section {
@@ -109,4 +108,28 @@ a.box {
   text-transform: capitalize;
   text-align: center;
   font-weight: bold;
+}
+
+.resource {
+  display: block;
+  margin: auto;
+}
+
+.icon.resource {
+  text-align: center;
+  height: auto;
+ width: auto;
+  .fa-plus-circle {
+    font-size: 6rem;
+    color: rgba($ironcolor-dark, 0.2);
+    &:hover {
+      color: rgba($ironcolor-dark, 1);
+    }
+  }
+}
+
+.box {
+  &.home {
+    min-height: 342px;
+  }
 }

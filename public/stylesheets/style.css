@@ -5,8 +5,8 @@ body {
 a {
   color: #111111; }
 
-.navbar-item img {
-  max-height: 80px; }
+.navbar-brand img {
+  max-height: 4.8rem; }
 
 .section {
   background-color: #F6F7F7; }
@@ -79,5 +79,22 @@ a.box {
   text-transform: capitalize;
   text-align: center;
   font-weight: bold; }
+
+.resource {
+  display: block;
+  margin: auto; }
+
+.icon.resource {
+  text-align: center;
+  height: auto;
+  width: auto; }
+  .icon.resource .fa-plus-circle {
+    font-size: 6rem;
+    color: rgba(30, 36, 52, 0.2); }
+    .icon.resource .fa-plus-circle:hover {
+      color: #1e2434; }
+
+.box.home {
+  min-height: 342px; }
 
 /*# sourceMappingURL=style.css.map */

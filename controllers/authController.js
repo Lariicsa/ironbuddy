@@ -8,24 +8,11 @@ exports.signupForm = (req, res) => {
   res.render('auth/signup')
 }
 
-// exports.signup = async (req, res) => {
-//   const {email, password, name, lastname} = req.body
-
-//   console.log(req.body)
-//   //const resource = await Resource.create({})
-//   User.register(new User({email, name, lastname}), password, function(err, account) {
-//     if (err) {
-//       return res.json(err)
-//     }
-//     return res.redirect('/auth/login')
-//   })
-// }
-
 exports.signup = async (req, res) => {
   const { email, password, name, lastname } = req.body;
   const confirmationCode = jwt.sign({ email }, process.env.SECRET);
 
-  const { _id } = await User.register({ email, password, name, lastname, confirmationCode }, password);
+  const { _id } = await User.register({ email, name, lastname, confirmationCode }, password);
 
   const text = `
     You are reciving this message because this email was used to sign up on
@@ -34,7 +21,7 @@ exports.signup = async (req, res) => {
     To verify this email direcction please go to this link:
 
     <a href="http://localhost:${process.env.PORT}/auth/profile/verify/${confirmationCode}">
-      Confirmation link
+    "href="http://localhost:${process.env.PORT}/auth/profile/verify/${confirmationCode}"
     </a>
   `;
 
@@ -53,10 +40,7 @@ exports.signup = async (req, res) => {
 exports.verifyAccount = async (req, res) => {
   const { code } = req.params;
   const user = await User.findById(req.user.id);
-  console.log('elusr', user);
-  
-  console.log(code);
-  console.log(user.confirmationCode);
+ 
   if (code === user.confirmationCode) {
     user.confirmationCode = undefined;
     await user.save();

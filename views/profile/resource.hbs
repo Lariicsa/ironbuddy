@@ -8,10 +8,29 @@
 			<p class="link"><a href="{{this.url}}">{{this.url}}</a></p>
 			<hr>
 			<form action="/profile/resource/{{_id}}/comment" method="POST" enctype="multipart/form-data">
-			<input type="file" name="commentImg" class="comment-file">
-			<textarea class="textarea" placeholder="Your comment here" name="comment"></textarea>
-			
-			<input type="submit" value="Respond" class="button is-info">
+				{{!-- <input type="file" name="commentImg" class="comment-file"> --}}
+
+				<hr>
+
+
+				<textarea class="textarea" placeholder="Your comment here" name="comment"></textarea>
+				<div class="field">
+					<div class="file is-primary">
+						<label class="file-label">
+							<input class="file-input" type="file" name="commentImg">
+							<span class="file-cta">
+								<span class="file-icon">
+									<i class="fas fa-upload"></i>
+								</span>
+								<span class="file-label">
+									Add picture to comment
+								</span>
+							</span>
+						</label>
+					</div>
+				</div>
+
+				<input type="submit" value="Respond" class="button is-info">
 			</form>
 		</div>
 	</div>
@@ -20,17 +39,16 @@
 	<div class="column">
 		<div class="box">
 			{{#each comments as |comment|}}
-				
-          <div class="comment-user">
-            <img src="{{comment.creator.img}}" alt="{{comment.creator.img}}" width="60px"/>
-						<span class="comment-username">{{comment.creator.name}} {{comment.creator.lastname}}</span>
-          </div>
-          <div class="comment-content">
-            <p class="comment-text">{{comment.comment}}</p>
-            <img class="comment-img" src="{{comment.picPath}}" alt="{{comment.picName}}" width="300px">
-          </div>
-          {{/each}}
+
+			<div class="comment-user">
+				<img src="{{comment.creator.img}}" alt="{{comment.creator.img}}" width="60px" />
+				<span class="comment-username">{{comment.creator.name}} {{comment.creator.lastname}}</span>
+			</div>
+			<div class="comment-content">
+				<p class="comment-text">{{comment.comment}}</p>
+				<img class="comment-img" src="{{comment.picPath}}" alt="{{comment.picName}}" width="300px">
+			</div>
+			{{/each}}
 		</div>
 	</div>
 </div>
-
