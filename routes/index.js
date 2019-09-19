@@ -21,15 +21,11 @@ router.get('/', isLoggedIn('/auth/login'), async (req, res, next) => {
 
 router.get('/profile', isLoggedIn('/auth/login'), getProfile)
 router.get('/profile/edit', isLoggedIn('/auth/login'), editProfileForm)
-router.post('/profile/edit', isLoggedIn('/auth/login'), catchErrors(editProfile))
+router.post('/profile/edit', uploadCloud.single('photo'), isLoggedIn('/auth/login'), catchErrors(editProfile))
 
 router.get('/profile/resources', isLoggedIn('/auth/login'), getResource)
-
 router.get('/profile/addresources', isLoggedIn('/auth/login'), addResourceForm)
-
-
 router.post('/profile/addresources', isLoggedIn('/auth/login'), catchErrors(addResource))
-
 //router.get('/profile/resource', isLoggedIn('/auth/login'), getResourceView)
 router.get('/profile/resource', getResourceView)
 
