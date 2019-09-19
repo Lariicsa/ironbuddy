@@ -30,7 +30,8 @@ router.get('/profile/addresources', isLoggedIn('/auth/login'), addResourceForm)
 
 router.post('/profile/addresources', isLoggedIn('/auth/login'), catchErrors(addResource))
 
-router.get('/profile/resource', isLoggedIn('/auth/login'), getResourceView)
+//router.get('/profile/resource', isLoggedIn('/auth/login'), getResourceView)
+router.get('/profile/resource', getResourceView)
 
 
 router.post('/profile/resource/:id/comment', uploadCloud.single('commentImg'), isLoggedIn('/auth/login'), catchErrors(addComment))

@@ -39,12 +39,13 @@ a {
 
   &-marging-sides {
     padding: 0 8px;
-  font-weight: bold;
-  text-decoration: underline;
-  &:hover {
-    text-decoration: none;
-    color: $ironcolor;
-  }
+    font-weight: bold;
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+      color: $ironcolor;
+    }
   }
 }
 
@@ -54,9 +55,10 @@ a {
     max-height: 4.8rem;
   }
 }
+
 .section {
   background-color: $bg-body;
-  height: calc(100vh - 93px);
+  min-height: calc(100vh - 93px);
 }
 
 .table tr td.link,
@@ -89,6 +91,7 @@ a {
 
   &.danger {
     color: rgba(#ff3860, 0.4);
+
     &:hover {
       color: rgba(#ff3860, 1);
     }
@@ -96,6 +99,7 @@ a {
 
   .fa-chevron-right {
     position: relative;
+
     &:hover {
       right: -2px;
     }
@@ -114,9 +118,11 @@ a {
   padding: 12px;
   height: auto;
   width: auto;
-  & > *  {
+
+  &>* {
     font-size: 2rem;
     color: $grey-lite;
+
     &:hover {
       color: $ironcolor-dark;
     }
@@ -127,6 +133,7 @@ a {
   display: inline-block;
   border-radius: 100%;
   height: auto;
+
   &-48 {
     height: 48px;
     width: 48px;
@@ -137,13 +144,14 @@ a {
   background-position: center;
   background-size: cover;
   border-radius: 100%;
-  box-shadow: 0 2px 2px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
+  box-shadow: 0 2px 2px rgba(10, 10, 10, .1), 0 0 0 1px rgba(10, 10, 10, .1);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 48px;
   width: 48px;
+
   &.x2 {
     height: 56px;
     width: 56px;
@@ -171,14 +179,16 @@ a.picture {
 }
 
 .box {
-position: relative;
+  position: relative;
+
   .picture.x8 {
     margin: 4% auto;
   }
 
   .ironcenter {
     margin: 4% auto;
-    & >* {
+
+    &>* {
       text-align: center;
     }
   }
@@ -187,9 +197,10 @@ position: relative;
 a.box {
   position: relative;
   bottom: 0;
+
   &:hover,
   &:focus {
-    box-shadow: 0 2px 2px rgba(8,8,8,.1), 0 0 0 1px rgba(8,8,8,.1);
+    box-shadow: 0 2px 2px rgba(8, 8, 8, .1), 0 0 0 1px rgba(8, 8, 8, .1);
     bottom: 2px;
     border: 0;
   }
@@ -222,10 +233,12 @@ a.box {
 .icon.resource {
   text-align: center;
   height: auto;
- width: auto;
+  width: auto;
+
   .fa-plus-circle {
     font-size: 6rem;
     color: rgba($ironcolor-dark, 0.2);
+
     &:hover {
       color: rgba($ironcolor-dark, 1);
     }
@@ -240,6 +253,79 @@ a.box {
 
 .title-home.title.is-2 {
   margin-bottom: 4%;
+}
+
+
+.comment {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin: 4% auto;
+
+  &:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+
+  &-name {
+    text-transform: capitalize;
+    font-weight: bold;
+  }
+
+  &-pic {
+    display: block;
+    border-radius: 100%;
+    background-position: center;
+    background-size: cover;
+    height: 32px;
+    width: 32px;
+  }
+
+  &s {
+    position: relative;
+  }
+
+  &-user {
+    display: flex;
+    margin-left: 8px;
+    justify-content: space-between;
+    align-items: center;
+    width: 100px;
+  }
+
+  &-content {
+    background-color: $is-blue;
+    border-radius: 8px;
+    padding: 4%;
+    width: 80%;
+    position: relative;
+  }
+
+  &:nth-child(odd) {
+    &:before {
+      content: '';
+      width: 0;
+      height: 0;
+      border-top: 16px solid transparent;
+      border-right: 32px solid $is-blue;
+      border-bottom: 2px solid transparent;
+      position: absolute;
+      left: 92px;
+      top: 24px;
+    }
+  }
+  &:nth-child(even) {
+    &:before {
+      content: '';
+      width: 0;
+      height: 0;
+      border-top: 16px solid transparent;
+      border-left: 32px solid $is-blue;
+      border-bottom: 2px solid transparent;
+      position: absolute;
+      right: 92px;
+      top: 24px;
+    } 
+  }
 }
 
 .footer {

@@ -31,7 +31,7 @@ a {
 
 .section {
   background-color: #EDF0F6;
-  height: calc(100vh - 93px); }
+  min-height: calc(100vh - 93px); }
 
 .table tr td.link,
 .link {
@@ -169,6 +169,58 @@ a.box {
 
 .title-home.title.is-2 {
   margin-bottom: 4%; }
+
+.comment {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin: 4% auto; }
+  .comment:nth-child(even) {
+    flex-direction: row-reverse; }
+  .comment-name {
+    text-transform: capitalize;
+    font-weight: bold; }
+  .comment-pic {
+    display: block;
+    border-radius: 100%;
+    background-position: center;
+    background-size: cover;
+    height: 32px;
+    width: 32px; }
+  .comments {
+    position: relative; }
+  .comment-user {
+    display: flex;
+    margin-left: 8px;
+    justify-content: space-between;
+    align-items: center;
+    width: 100px; }
+  .comment-content {
+    background-color: rgba(35, 194, 255, 0.32);
+    border-radius: 8px;
+    padding: 4%;
+    width: 80%;
+    position: relative; }
+  .comment:nth-child(odd):before {
+    content: '';
+    width: 0;
+    height: 0;
+    border-top: 16px solid transparent;
+    border-right: 32px solid rgba(35, 194, 255, 0.32);
+    border-bottom: 2px solid transparent;
+    position: absolute;
+    left: 92px;
+    top: 24px; }
+  .comment:nth-child(even):before {
+    content: '';
+    width: 0;
+    height: 0;
+    border-top: 16px solid transparent;
+    border-left: 32px solid rgba(35, 194, 255, 0.32);
+    border-bottom: 2px solid transparent;
+    position: absolute;
+    right: 92px;
+    top: 24px; }
 
 .footer {
   background-color: #1E2434;
