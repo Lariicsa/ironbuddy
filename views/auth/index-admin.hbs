@@ -1,14 +1,13 @@
-<h1 class="title is-2 has-text-centered title-home">Welcome Ironfriend</h1>
+<h1 class="title is-2 has-text-centered title-home">Welcome Ironadmin</h1>
 <div class="columns is-multiline is-mobile is-centered">
 	<div class="column is-one-third">
 		<div class="box home">
 			<span class="title is-5">My profile</span>
-			<div class="picture x4" style="background-image: url('{{this.img}}')"></div>
+			<div class="picture x4 " style="background-image: url('{{user.img}}')"></div>
 			<div class="columns is-mobile is-centered">
 				<div class="column">
-					
-					{{#if confirmationCode}}
 					<p><strong>Status: </strong>{{user.status}}</p>
+					{{#if confirmationCode}}
 					<div>
 						<p>Didn't recived a verification email? <a class="button is-text" href="/profile/reset-code">Send again</a></p>
 					</div>
@@ -35,7 +34,7 @@
 		<div class="box home">
 			<div class="columns is-mobile is-centered">
 				<div class="column">
-					<p class="title is-5">Latest Resources</p>
+					<p class="title is-5">Latest comments</p>
 				</div>
 			</div>
 		</div>
