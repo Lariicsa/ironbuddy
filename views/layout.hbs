@@ -1,78 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{title}}</title>
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
-    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
-<body>
-<nav class="navbar">
-  <div class="navbar-brand">
-    <a class="navbar-item" href="/">
-    <img src="/images/ironhack-logo.png" alt="ironhack-logo">
-    </a>
-    <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-  </div>
 
-  <div id="navbarExampleTransparentExample" class="navbar-menu">
-    <div class="navbar-start">
+<body>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
       <a class="navbar-item" href="/">
-        Summary
+        <img src="/public/images/ironhack-logo.png" width="112" height="28">
       </a>
-      <a class="navbar-item" href="/profile">
-          Profile
+
+      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
       </a>
     </div>
-    <div class="navbar-end">
-      <div class="navbar-item">
-        <ul class="field is-grouped">
-          {{#unless user}}
-          <li class="control">
-            <a class="button is-text"  href="/auth/login">
-              <span>
-                Log In
-              </span>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+        <a href="/" class="navbar-item">
+          Summary
+        </a>
+        <a href="/profile" class="navbar-item">
+          Profile
+        </a>
+      </div>
+
+      <div class="navbar-end">
+        <div class="navbar-item">
+          
+          <div class="buttons">
+            {{#unless user}}
+            <a class="button is-text" href="/auth/signup">
+              <strong>Sign up</strong>
             </a>
-          </li>
-          <li class="control">
-            <a class="button is-text"  href="/auth/signup">
-              <span>
-                Sign up
-              </span>
+            <a class="button is-text" href="/auth/login">
+              Log in
             </a>
-          </li>
-          {{else}}
-          <li class="control">
-            <a class="button is-text" href="/auth/logout">
-              <span>Log out</span>
-            </a>
-          </li>
-          <li class="control">
-            <p>Hello, <strong>{{user.name}}</strong> </p>
-          </li>
-          <li class="control">
-              <a href="/profile" class="picture" style="background-image: url('{{user.img}}')"></a>
-          </li>
-          {{/unless}}
-        </ul>
+            {{else}}
+
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link picture" style="background-image: url('{{user.img}}')"></a>
+              <div class="navbar-dropdown">
+                <a href="/profile" class="navbar-item">
+                  Profile
+                </a>
+                <hr class="navbar-divider">
+                <a href="/auth/logout" class="navbar-item">
+                  Log out
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        {{/unless}}
       </div>
     </div>
-
-   
-
-  </div>
-</nav>
-<section class="section">
+  </nav>
+  <section class="section">
     <div class="container">
-     {{{body}}}
+      {{{body}}}
     </div>
   </section>
 
@@ -82,4 +78,5 @@
 
   <script src="/javascripts/script.js"></script>
 </body>
+
 </html>
