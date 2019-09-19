@@ -10,16 +10,15 @@ exports.getProfile  = async (req, res) => {
 exports.editProfileForm  = async (req, res) => {
   const { userid } = req.query
   const user = await User.findById(userid).populate('resource')
-  console.log(user)
   res.render('profile/edit', user)
 }
 
 exports.editProfile = async (req,res ) => {
-  const { name, lastname } = req.body
+  const { name, lastname, email, password } = req.body
   const {url: img} = req.file
   const { userid } = req.query
-  await User.findByIdAndUpdate(userid, { name, lastname, img })
-  console.log('editprofile',userid)
+  await User.findByIdAndUpdate(userid, { name, lastname, email, password, img })
+  console.log('editprofile', { name, lastname, email, password, img })
   res.redirect('/profile')
 }
 
