@@ -8,6 +8,12 @@ a {
 .button {
   font-weight: bold; }
 
+.elems-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%; }
+
 .link-cont {
   display: flex;
   justify-content: center; }
@@ -29,6 +35,8 @@ a {
 
 .table tr td.link,
 .link {
+  width: 43%;
+  padding: 0 1%;
   position: relative; }
   .table tr td.link a,
   .link a {
@@ -41,6 +49,21 @@ a {
     top: 0.8rem;
     z-index: 10;
     width: 100%; }
+
+.table tr td.td-right {
+  text-align: right; }
+
+.ironbutton {
+  font-size: 20px;
+  color: #1E2434; }
+  .ironbutton.danger {
+    color: rgba(255, 56, 96, 0.4); }
+    .ironbutton.danger:hover {
+      color: #ff3860; }
+  .ironbutton .fa-chevron-right {
+    position: relative; }
+    .ironbutton .fa-chevron-right:hover {
+      right: -2px; }
 
 .circle {
   display: inline-block;

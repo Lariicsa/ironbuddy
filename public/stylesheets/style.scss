@@ -23,6 +23,13 @@ a {
   font-weight: bold;
 }
 
+.elems-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
 .link {
   &-cont {
     display: flex;
@@ -53,6 +60,8 @@ a {
 
 .table tr td.link,
 .link {
+  width: 43%;
+  padding: 0 1%;
   position: relative;
 
   a {
@@ -65,6 +74,30 @@ a {
     top: 0.8rem;
     z-index: 10;
     width: 100%;
+  }
+}
+
+.table tr td.td-right {
+  text-align: right;
+}
+
+
+.ironbutton {
+  font-size: $font-size-l;
+  color: $ironcolor-dark;
+
+  &.danger {
+    color: rgba(#ff3860, 0.4);
+    &:hover {
+      color: rgba(#ff3860, 1);
+    }
+  }
+
+  .fa-chevron-right {
+    position: relative;
+    &:hover {
+      right: -2px;
+    }
   }
 }
 
