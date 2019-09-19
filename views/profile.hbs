@@ -1,17 +1,28 @@
 <div class="columns is-desktop is-centered">
 	<div class="column is-half">
+		<h1 class="title is-2 has-text-centered">My profile</h1>
 		<hr>
 		<div class="box">
-			<figure>
-				<img class="is-rounded" src="{{this.img}}" alt="">
-			</figure>
-			<p>{{this.name}}</p>
-			<p>{{this.lastname}}</p>
-			<p>{{this.email}}</p>
+			<div class="picture x8 " style="background-image: url('{{this.img}}')"></div>
+			<div class="ironcenter">
 
-			<a class="button is-text is-info" href="/profile/edit?userid={{this._id}}">Edit Profile</a>
+				<p class="title is-4">{{this.name}} {{this.lastname}}</p>
+				<p class="subtitle is-6">{{this.email}}</p>
+			</div>
+
+			<a class="ironback icon ironicon-top-right" href="/profile/edit?userid={{this._id}}">
+				<i class="far fa-edit"></i>
+			</a>
 			<hr>
-			<a class="button is-text" href="/profile/resources">Resources</a>
+			<div class="buttons is-right">
+				<a href="/profile/resources" class="button is-text">
+				<span>View Resources</span>
+				<span class="icon is-small">
+					<i class="fas fa-chevron-right"></i>
+				</span>
+			</a>
+			</div>
+
 		</div>
 	</div>
 </div>

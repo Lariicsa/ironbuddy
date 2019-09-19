@@ -30,7 +30,7 @@ a {
   max-height: 4.8rem; }
 
 .section {
-  background-color: #F6F7F7;
+  background-color: #EDF0F6;
   height: calc(100vh - 93px); }
 
 .table tr td.link,
@@ -65,6 +65,23 @@ a {
     .ironbutton .fa-chevron-right:hover {
       right: -2px; }
 
+.ironicon-top-right {
+  position: absolute;
+  right: 24px;
+  top: 24px; }
+
+.ironback {
+  background-color: #EDF0F6;
+  border-radius: 100%;
+  padding: 12px;
+  height: auto;
+  width: auto; }
+  .ironback > * {
+    font-size: 2rem;
+    color: rgba(30, 36, 52, 0.4); }
+    .ironback > *:hover {
+      color: #1E2434; }
+
 .circle {
   display: inline-block;
   border-radius: 100%;
@@ -92,9 +109,23 @@ a {
     margin: auto;
     height: 88px;
     width: 88px; }
+  .picture.x8 {
+    box-shadow: 0 4px 4px #23C2FF, 0 0 0 4px #23C2FF;
+    margin: auto;
+    height: 116px;
+    width: 116px; }
 
 a.picture:hover {
   box-shadow: 0 4px 4px #23C2FF, 0 0 0 4px #23C2FF; }
+
+.box {
+  position: relative; }
+  .box .picture.x8 {
+    margin: 4% auto; }
+  .box .ironcenter {
+    margin: 4% auto; }
+    .box .ironcenter > * {
+      text-align: center; }
 
 a.box {
   position: relative;

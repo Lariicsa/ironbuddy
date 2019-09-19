@@ -2,8 +2,9 @@
 
 $ironcolor: #23C2FF;
 $ironcolor-dark: #1E2434;
-$bg-body: #F6F7F7;
+$bg-body: #EDF0F6;
 $is-blue: rgba($ironcolor, 0.32);
+$grey-lite: rgba($ironcolor-dark, 0.4);
 $font-size-s: 16px;
 $font-size-r: 18px;
 $font-size-l: 20px;
@@ -101,6 +102,27 @@ a {
   }
 }
 
+.ironicon-top-right {
+  position: absolute;
+  right: 24px;
+  top: 24px;
+}
+
+.ironback {
+  background-color: $bg-body;
+  border-radius: 100%;
+  padding: 12px;
+  height: auto;
+  width: auto;
+  & > *  {
+    font-size: 2rem;
+    color: $grey-lite;
+    &:hover {
+      color: $ironcolor-dark;
+    }
+  }
+}
+
 .circle {
   display: inline-block;
   border-radius: 100%;
@@ -133,11 +155,32 @@ a {
     height: 88px;
     width: 88px;
   }
+
+  &.x8 {
+    box-shadow: 0 4px 4px $ironcolor, 0 0 0 4px $ironcolor;
+    margin: auto;
+    height: 116px;
+    width: 116px;
+  }
 }
 
 a.picture {
   &:hover {
     box-shadow: 0 4px 4px $ironcolor, 0 0 0 4px $ironcolor;
+  }
+}
+
+.box {
+position: relative;
+  .picture.x8 {
+    margin: 4% auto;
+  }
+
+  .ironcenter {
+    margin: 4% auto;
+    & >* {
+      text-align: center;
+    }
   }
 }
 
