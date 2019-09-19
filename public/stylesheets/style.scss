@@ -12,8 +12,27 @@ body {
 }
 
 a {
-  color: #111111;
+  color: $ironcolor;
 }
+
+.link {
+  &-cont {
+    display: flex;
+    justify-content: center;
+  }
+
+  &-marging-sides {
+    padding: 0 8px;
+  font-weight: bold;
+  text-decoration: underline;
+  &:hover {
+    text-decoration: none;
+    color: $ironcolor;
+  }
+  }
+}
+
+
 .navbar-brand {
   img {
     max-height: 4.8rem;
@@ -21,6 +40,7 @@ a {
 }
 .section {
   background-color: $bg-body;
+  height: calc(100vh - 93px);
 }
 
 .table tr td.link,
@@ -132,4 +152,9 @@ a.box {
   &.home {
     min-height: 342px;
   }
+}
+
+.footer {
+  background-color: $ironcolor-dark;
+  color: #F6F7F7;
 }

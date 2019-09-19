@@ -3,13 +3,26 @@ body {
   color: #1E2434; }
 
 a {
-  color: #111111; }
+  color: #23C2FF; }
+
+.link-cont {
+  display: flex;
+  justify-content: center; }
+
+.link-marging-sides {
+  padding: 0 8px;
+  font-weight: bold;
+  text-decoration: underline; }
+  .link-marging-sides:hover {
+    text-decoration: none;
+    color: #23C2FF; }
 
 .navbar-brand img {
   max-height: 4.8rem; }
 
 .section {
-  background-color: #F6F7F7; }
+  background-color: #F6F7F7;
+  height: calc(100vh - 93px); }
 
 .table tr td.link,
 .link {
@@ -96,5 +109,9 @@ a.box {
 
 .box.home {
   min-height: 342px; }
+
+.footer {
+  background-color: #1E2434;
+  color: #F6F7F7; }
 
 /*# sourceMappingURL=style.css.map */
