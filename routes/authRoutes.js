@@ -5,6 +5,8 @@ const {
   loginForm, 
   login, 
   logout,
+  getAdmin,
+  userForm,
 verifyAccount,
 resetVerifyCode } = require('../controllers/authController')
 const catchErrors = require('../middlewares/catchErrors')
@@ -15,15 +17,21 @@ const User = require('../models/User')
 const Resource = require('../models/Resource')
 const uploadCloud = require('../config/cloudinary')
 
-router.get('/signup', isLoggedOut('/'), signupForm)
-router.post('/signup', catchErrors(signup))
+// router.get('/signup', isLoggedOut('/'), signupForm)
+// router.post('/signup', catchErrors(signup))
 
 router.get('/login', isLoggedOut('/'), loginForm)
-router.post('/login', login)
-router.get('/logout', logout)
+router.post('/login', passport.authenticate('local'), login)
+//ADMIN
+router.get('/admin', isLoggedIn('/auth/login'), getAdmin)
 
+router.get('/add-user', isLoggedIn('/auth/login'), userForm)
+
+
+//USER
 router.get('/profile/verify/:code', isLoggedIn('/auth/login'), catchErrors(verifyAccount));
 router.get('/profile/reset-code', isLoggedIn('/auth/login'), catchErrors(resetVerifyCode));
 
+router.get('/logout', logout)
 
 module.exports = router

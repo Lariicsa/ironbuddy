@@ -4,15 +4,57 @@ const Resource = require('../models/Resource')
 const transport = require('./../config/sendMail')
 const User = require('../models/User')
 
+exports.loginForm = (req, res) => {
+  res.render('auth/login', { action: 'Login' })
+}
+
+exports.login = (req, res, next)=>{
+  passport.authenticate('local', (err, user)=>{
+    req.app.locals.user = user
+    req.app.locals.isAdmin = user.role === 'ADMIN'
+    req.logIn(user, err =>{
+      if(user.role === 'ADMIN'){
+        res.redirect('/auth/admin')
+      }else if (user.role === 'USER'){
+        res.redirect('/')
+      }else{
+        res.redirect('/auth/login')
+      }
+    } )
+  })(req, res, next)
+}
+  
+
+
+/* exports.login = (req, res, next)=>{
+  passport.authenticate('local', (err, user)=>{
+    req.app.locals.user = user
+
+    req.logIn(user, err =>{
+      return res.redirect('/')
+    } )
+  })(req, res, next)
+} */
+
+//admin 
+exports.getAdmin = (req, res, next) => {
+  res.render('auth/index-admin')
+}
+exports.userForm = (req, res, next) =>{
+  res.render('auth/add-user')
+}
+
+
+
 exports.signupForm = (req, res) => {
   res.render('auth/signup')
 }
 
 exports.signup = async (req, res) => {
-  const { email, password, name, lastname } = req.body;
+  const { email, password, name, lastname, level } = req.body;
   const confirmationCode = jwt.sign({ email }, process.env.SECRET);
 
-  const { _id } = await User.register({ email, name, lastname, confirmationCode }, password);
+  const { _id } = await User.register({ email, name, lastname, level, confirmationCode }, password);
 
   const text = `
     You are reciving this message because this email was used to sign up on
@@ -87,19 +129,7 @@ exports.resetVerifyCode = async (req, res) => {
   res.redirect('/profile');
 };
 
-exports.loginForm = (req, res) => {
-  res.render('auth/login', { action: 'Login' })
-}
 
-exports.login = (req, res, next)=>{
-  passport.authenticate('local', (err, user)=>{
-    req.app.locals.user = user
-
-    req.logIn(user, err =>{
-      return res.redirect('/')
-    } )
-  })(req, res, next)
-}
 
 exports.logout = (req, res) => {
   req.logout()

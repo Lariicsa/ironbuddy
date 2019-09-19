@@ -6,11 +6,14 @@ const userSchema = new Schema(
     name: String,
 		lastname: String,
     email: String,
-		password: String,
     role: {
       type: String,
       enum: ['ADMIN', 'USER'],
       default: 'USER'
+    },
+    level:{
+      type: String,
+      enum: ['STUDENT', 'BUDDY']
     },
     resource: {
       ref: 'Resource',
