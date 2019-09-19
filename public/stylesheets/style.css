@@ -26,6 +26,17 @@ a {
     text-decoration: none;
     color: #23C2FF; }
 
+@media screen and (min-width: 1024px) {
+  .navbar {
+    min-height: 4.8rem; }
+    .navbar-dropdown.profile {
+      left: auto;
+      right: 0; } }
+
+.navbar-item,
+.navbar-link {
+  color: #1E2434; }
+
 .navbar-brand img {
   max-height: 4.8rem; }
 

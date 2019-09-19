@@ -49,6 +49,21 @@ a {
   }
 }
 
+@media screen and (min-width: 1024px) {
+  .navbar {
+    min-height: 4.8rem;
+
+    &-dropdown.profile {
+      left: auto;
+      right:0;
+    }
+  }
+}
+
+.navbar-item,
+.navbar-link {
+  color: $ironcolor-dark;
+}
 
 .navbar-brand {
   img {
@@ -313,6 +328,7 @@ a.box {
       top: 24px;
     }
   }
+
   &:nth-child(even) {
     &:before {
       content: '';
@@ -324,7 +340,7 @@ a.box {
       position: absolute;
       right: 92px;
       top: 24px;
-    } 
+    }
   }
 }
 
