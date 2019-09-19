@@ -167,6 +167,9 @@ a.box {
 .box.home {
   min-height: 342px; }
 
+.title-home.title.is-2 {
+  margin-bottom: 4%; }
+
 .footer {
   background-color: #1E2434;
   color: #F6F7F7; }
