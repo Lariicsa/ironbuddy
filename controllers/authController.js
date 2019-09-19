@@ -9,19 +9,39 @@ exports.loginForm = (req, res) => {
 }
 
 exports.login = (req, res, next)=>{
-  if(req.user.role === 'ADMIN'){
-    res.redirect('/auth/admin')
-  }else if (req.user.role === 'USER'){
-    res.redirect('/')
-  }else{
-    res.redirect('login')
-  }
+  passport.authenticate('local', (err, user)=>{
+    req.app.locals.user = user
+    req.app.locals.isAdmin = user.role === 'ADMIN'
+    req.logIn(user, err =>{
+      if(user.role === 'ADMIN'){
+        res.redirect('/auth/admin')
+      }else if (user.role === 'USER'){
+        res.redirect('/')
+      }else{
+        res.redirect('/auth/login')
+      }
+    } )
+  })(req, res, next)
 }
+  
 
+
+/* exports.login = (req, res, next)=>{
+  passport.authenticate('local', (err, user)=>{
+    req.app.locals.user = user
+
+    req.logIn(user, err =>{
+      return res.redirect('/')
+    } )
+  })(req, res, next)
+} */
 
 //admin 
 exports.getAdmin = (req, res, next) => {
   res.render('auth/index-admin')
+}
+exports.userForm = (req, res, next) =>{
+  res.render('auth/add-user')
 }
 
 

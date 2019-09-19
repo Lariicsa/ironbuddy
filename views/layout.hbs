@@ -12,6 +12,7 @@
 </head>
 
 <body>
+
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item" href="/">
@@ -25,7 +26,19 @@
       </a>
     </div>
 
-    <div id="navbarBasicExample" class="navbar-menu">
+   {{#if user }}
+   <div id="navbarBasicExample" class="navbar-menu"></div>
+    {{#if isAdmin}}
+      <div class="navbar-start">
+        <a href="/" class="navbar-item">
+          Add User
+        </a>
+        <a href="/profile/resources" class="navbar-item">
+          View Users
+        </a>
+      </div>
+
+    {{else}}
       <div class="navbar-start">
         <a href="/" class="navbar-item">
           Summary
@@ -35,13 +48,19 @@
         </a>
       </div>
 
+
+    {{/if}}
+
+    
+      
+
       <div class="navbar-end">
         <div class="navbar-item">
           
           <div class="buttons">
-            {{#unless user}}
+            
            
-            {{else}}
+            
 
             <div class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link picture" style="background-image: url('{{user.img}}')"></a>
@@ -57,9 +76,10 @@
             </div>
           </div>
         </div>
-        {{/unless}}
       </div>
     </div>
+        {{/if}}
+
   </nav>
   <section class="section">
     <div class="container">
