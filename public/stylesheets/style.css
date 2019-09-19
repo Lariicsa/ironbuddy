@@ -5,6 +5,9 @@ body {
 a {
   color: #23C2FF; }
 
+.button {
+  font-weight: bold; }
+
 .link-cont {
   display: flex;
   justify-content: center; }

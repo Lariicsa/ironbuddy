@@ -4,6 +4,9 @@ $ironcolor: #23C2FF;
 $ironcolor-dark: #1E2434;
 $bg-body: #F6F7F7;
 $is-blue: rgba($ironcolor, 0.32);
+$font-size-s: 16px;
+$font-size-r: 18px;
+$font-size-l: 20px;
 
 
 body {
@@ -13,6 +16,11 @@ body {
 
 a {
   color: $ironcolor;
+}
+
+.button {
+
+  font-weight: bold;
 }
 
 .link {
