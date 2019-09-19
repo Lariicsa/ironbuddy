@@ -196,6 +196,11 @@ a.box {
   margin: 4% auto; }
   .comment:nth-child(even) {
     flex-direction: row-reverse; }
+  .comment-img {
+    border: 8px solid white;
+    border-radius: 4px;
+    width: 88px;
+    margin: 2%; }
   .comment-name {
     text-transform: capitalize;
     font-weight: bold; }
@@ -214,32 +219,40 @@ a.box {
     justify-content: space-between;
     align-items: center;
     width: 100px; }
-  .comment-content {
+  .comment:nth-child(odd) .comment-content {
     background-color: rgba(35, 194, 255, 0.32);
     border-radius: 8px;
     padding: 4%;
     width: 80%;
     position: relative; }
-  .comment:nth-child(odd):before {
-    content: '';
-    width: 0;
-    height: 0;
-    border-top: 16px solid transparent;
-    border-right: 32px solid rgba(35, 194, 255, 0.32);
-    border-bottom: 2px solid transparent;
-    position: absolute;
-    left: 92px;
-    top: 24px; }
-  .comment:nth-child(even):before {
-    content: '';
-    width: 0;
-    height: 0;
-    border-top: 16px solid transparent;
-    border-left: 32px solid rgba(35, 194, 255, 0.32);
-    border-bottom: 2px solid transparent;
-    position: absolute;
-    right: 92px;
-    top: 24px; }
+    .comment:nth-child(odd) .comment-content:before {
+      content: '';
+      width: 0;
+      height: 0;
+      border-top: 16px solid transparent;
+      border-right: 32px solid rgba(35, 194, 255, 0.32);
+      border-bottom: 2px solid transparent;
+      position: absolute;
+      left: -32px;
+      top: 24px; }
+  .comment:nth-child(even) {
+    text-align: right; }
+    .comment:nth-child(even) .comment-content {
+      background-color: rgba(35, 194, 255, 0.32);
+      border-radius: 8px;
+      padding: 4%;
+      width: 80%;
+      position: relative; }
+      .comment:nth-child(even) .comment-content:before {
+        content: '';
+        width: 0;
+        height: 0;
+        border-top: 16px solid transparent;
+        border-left: 32px solid rgba(35, 194, 255, 0.32);
+        border-bottom: 2px solid transparent;
+        position: absolute;
+        right: -32px;
+        top: 24px; }
 
 .footer {
   background-color: #1E2434;

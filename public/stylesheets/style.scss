@@ -59,7 +59,7 @@ a {
 
     &-dropdown.profile {
       left: auto;
-      right:0;
+      right: 0;
     }
   }
 }
@@ -197,6 +197,7 @@ a {
 }
 
 a.picture {
+
   &:hover,
   &:active {
     box-shadow: 0 4px 4px $ironcolor, 0 0 0 4px $ironcolor;
@@ -291,6 +292,13 @@ a.box {
     flex-direction: row-reverse;
   }
 
+  &-img {
+    border: 8px solid white;
+    border-radius: 4px;
+    width: 88px;
+    margin: 2%;
+  }
+
   &-name {
     text-transform: capitalize;
     font-weight: bold;
@@ -317,39 +325,58 @@ a.box {
     width: 100px;
   }
 
-  &-content {
-    background-color: $is-blue;
-    border-radius: 8px;
-    padding: 4%;
-    width: 80%;
-    position: relative;
-  }
+  // &-content {
+  //   background-color: $is-blue;
+  //   border-radius: 8px;
+  //   padding: 4%;
+  //   width: 80%;
+  //   position: relative;
+  // }
 
   &:nth-child(odd) {
-    &:before {
-      content: '';
-      width: 0;
-      height: 0;
-      border-top: 16px solid transparent;
-      border-right: 32px solid $is-blue;
-      border-bottom: 2px solid transparent;
-      position: absolute;
-      left: 92px;
-      top: 24px;
+    .comment-content {
+      background-color: $is-blue;
+      border-radius: 8px;
+      padding: 4%;
+      width: 80%;
+      position: relative;
+
+      &:before {
+        content: '';
+        width: 0;
+        height: 0;
+        border-top: 16px solid transparent;
+        border-right: 32px solid $is-blue;
+        border-bottom: 2px solid transparent;
+        position: absolute;
+        left: -32px;
+        top: 24px;
+      }
     }
+
   }
 
   &:nth-child(even) {
-    &:before {
-      content: '';
-      width: 0;
-      height: 0;
-      border-top: 16px solid transparent;
-      border-left: 32px solid $is-blue;
-      border-bottom: 2px solid transparent;
-      position: absolute;
-      right: 92px;
-      top: 24px;
+    text-align: right;
+
+    .comment-content {
+      background-color: $is-blue;
+      border-radius: 8px;
+      padding: 4%;
+      width: 80%;
+      position: relative;
+
+      &:before {
+        content: '';
+        width: 0;
+        height: 0;
+        border-top: 16px solid transparent;
+        border-left: 32px solid $is-blue;
+        border-bottom: 2px solid transparent;
+        position: absolute;
+        right: -32px;
+        top: 24px;
+      }
     }
   }
 }
