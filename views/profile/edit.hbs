@@ -5,8 +5,8 @@
 		<div class="box">
 			<form action="/profile/edit?userid={{_id}}" method="POST" enctype="multipart/form-data">
 
-				<input type="file" name="photo">
-
+				<input type="file" name="photo" value="{{this.img}}">
+				<img src="{{this.img}}" alt="{{this.name}}">
 				<div class="field">
 					<label class="label">Name</label>
 					<div class="control">

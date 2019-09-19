@@ -21,7 +21,10 @@ const resourceSchema = new Schema(
   },
   {
     timestamps: {
-      createdAt: 'createdAt',
+    //   createdAt: { 
+    //     type: Date,
+    //     default: Date.now
+    // },
       updatedAt: 'updatedAt'
     }
   }
