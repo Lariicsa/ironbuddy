@@ -168,7 +168,7 @@ a {
   background-position: center;
   background-size: cover;
   border-radius: 100%;
-  box-shadow: 0 2px 2px rgba(10, 10, 10, .1), 0 0 0 1px rgba(10, 10, 10, .1);
+  box-shadow: 0 4px 4px $ironcolor, 0 0 0 4px $ironcolor;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -194,13 +194,20 @@ a {
     height: 116px;
     width: 116px;
   }
+
+  &.x16 {
+    box-shadow: 0 4px 4px $ironcolor, 0 0 0 4px $ironcolor;
+    margin: 4% auto;
+    height: 148px;
+    width: 148px;
+  }
 }
 
 a.picture {
 
   &:hover,
   &:active {
-    box-shadow: 0 4px 4px $ironcolor, 0 0 0 4px $ironcolor;
+    box-shadow: 0 2px 2px $ironcolor, 0 0 0 21px $ironcolor;
   }
 }
 
