@@ -4,6 +4,28 @@ const Resource = require('../models/Resource')
 const transport = require('./../config/sendMail')
 const User = require('../models/User')
 
+exports.loginForm = (req, res) => {
+  res.render('auth/login', { action: 'Login' })
+}
+
+exports.login = (req, res, next)=>{
+  if(req.user.role === 'ADMIN'){
+    res.redirect('/auth/admin')
+  }else if (req.user.role === 'USER'){
+    res.redirect('/')
+  }else{
+    res.redirect('login')
+  }
+}
+
+
+//admin 
+exports.getAdmin = (req, res, next) => {
+  res.render('auth/index-admin')
+}
+
+
+
 exports.signupForm = (req, res) => {
   res.render('auth/signup')
 }
@@ -87,19 +109,7 @@ exports.resetVerifyCode = async (req, res) => {
   res.redirect('/profile');
 };
 
-exports.loginForm = (req, res) => {
-  res.render('auth/login', { action: 'Login' })
-}
 
-exports.login = (req, res, next)=>{
-  passport.authenticate('local', (err, user)=>{
-    req.app.locals.user = user
-
-    req.logIn(user, err =>{
-      return res.redirect('/')
-    } )
-  })(req, res, next)
-}
 
 exports.logout = (req, res) => {
   req.logout()
