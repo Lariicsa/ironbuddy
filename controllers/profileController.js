@@ -14,14 +14,16 @@ exports.editProfileForm  = async (req, res, next) => {
 }
 
 exports.editProfile = async (req, res, next) => {
-  const { name, lastname } = req.body
+  const { name, lastname, password } = req.body
   const { userid } = req.query
 
+  if (password) await User.setPassword(password)
+
   if (!req.file) {
-    await User.findByIdAndUpdate(userid, { name, lastname })
+    await User.findByIdAndUpdate(userid, { name, lastname, password })
   } else {
     const { url: img } = req.file
-    await User.findByIdAndUpdate(userid, { name, lastname, img })
+    await User.findByIdAndUpdate(userid, { name, lastname, password, img })
     req.app.locals.user.img = img
   }
   res.redirect('/profile')
