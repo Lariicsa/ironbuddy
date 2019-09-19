@@ -1,6 +1,10 @@
 body {
   font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
-  color: #1E2434; }
+  color: #1E2434;
+  background-image: url("../images/onda-04.svg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: repeat-x; }
 
 a {
   color: #23C2FF; }
@@ -33,6 +37,10 @@ a {
       left: auto;
       right: 0; } }
 
+.navbar-link:not(.is-arrowless)::after,
+.select:not(.is-multiple):not(.is-loading)::after {
+  display: none; }
+
 .navbar-item,
 .navbar-link {
   color: #1E2434; }
@@ -41,8 +49,8 @@ a {
   max-height: 4.8rem; }
 
 .section {
-  background-color: #EDF0F6;
-  min-height: calc(100vh - 93px); }
+  background-color: rgba(237, 240, 246, 0.72);
+  min-height: calc(100vh - 92px); }
 
 .table tr td.link,
 .link {
@@ -126,7 +134,7 @@ a {
     height: 116px;
     width: 116px; }
 
-a.picture:hover {
+a.picture:hover, a.picture:active {
   box-shadow: 0 4px 4px #23C2FF, 0 0 0 4px #23C2FF; }
 
 .box {

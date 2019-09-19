@@ -28,16 +28,9 @@ exports.editProfile = async (req, res, next) => {
 
 exports.getResource = async (req, res) => {
   const resources = await Resource.find().populate('user')
-  const user = req.user
+  const user = req.user //* se agregó user=req.user
   res.render('profile/resources', {resources, user})
 }
-//* se agregó user=req.user
-//Resource.find me va a traer todo lo de todos 
-
-// router.get("/", isLoggedIn, async(req, res) => {
-//   const posts = await Post.find().populate('creator')
-//   res.render('index',{ posts } );
-// })
 
 exports.addResource = async (req, res) => {
   const { name, url } = req.body
@@ -53,7 +46,6 @@ exports.addResource = async (req, res) => {
 exports.addResourceForm = async (req, res) => {
   res.render('profile/addresources')
 }
-
 
 exports.getResourceView = async (req, res) => {
   const { resourceid } = req.query
@@ -78,3 +70,8 @@ exports.deleteResource = async (req, res) => {
   await Resource.findByIdAndDelete(resourceid)
   res.redirect('/profile/resources')
 }
+
+
+
+
+
