@@ -12,6 +12,10 @@ const userSchema = new Schema(
       enum: ['ADMIN', 'USER'],
       default: 'USER'
     },
+    level:{
+      type: String,
+      enum: ['STUDENT', 'BUDDY']
+    },
     resource: {
       ref: 'Resource',
       type: Schema.Types.ObjectId

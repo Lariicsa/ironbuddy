@@ -9,10 +9,10 @@ exports.signupForm = (req, res) => {
 }
 
 exports.signup = async (req, res) => {
-  const { email, password, name, lastname } = req.body;
+  const { email, password, name, lastname, level } = req.body;
   const confirmationCode = jwt.sign({ email }, process.env.SECRET);
 
-  const { _id } = await User.register({ email, name, lastname, confirmationCode }, password);
+  const { _id } = await User.register({ email, name, lastname, level, confirmationCode }, password);
 
   const text = `
     You are reciving this message because this email was used to sign up on
