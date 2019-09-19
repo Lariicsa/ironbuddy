@@ -81,3 +81,20 @@ exports.addComment = async (req, res, next) => {
   const getResource = await Resource.findByIdAndUpdate({ _id: id }, { $push: { comments: { creator: req.user.id, comment, picName, picPath} } })
   res.redirect(`/profile/resource?resourceid=${getResource._id}`)
 }
+
+
+
+
+
+
+
+
+
+
+
+
+exports.deleteResource = async (req, res) => {
+  const {resourceid} = req.params//query
+  await Resource.findByIdAndDelete(resourceid)
+  res.redirect('/profile/resources')
+}

@@ -1,5 +1,5 @@
 <div class="columns is-desktop is-centered">
-	<div class="column is-half">
+	<div class="column is-8">
 		<h3 class="title is-4">Resources</h3>
 		<hr>
 		<div class="box">
@@ -20,6 +20,8 @@
 						<td>{{this.name}}</td>
 						<td class="link"><a class="clic" href="{{this.url}}" target="_blank">{{this.url}}</a></td>
 						<td><a href="/profile/resource?resourceid={{_id}}">ver recurso</a></td>
+						<td><a class="button is-danger" href="/resource/delete/{{_id}}">Delete</a></td>
+						
 					</tr>
 					{{/each}}
 				</tbody>
