@@ -128,6 +128,8 @@ a {
     margin: auto;
     height: 88px;
     width: 88px; }
+    .picture.x4.margin-tb {
+      margin: 4% auto; }
   .picture.x8 {
     box-shadow: 0 4px 4px #23C2FF, 0 0 0 4px #23C2FF;
     margin: auto;
@@ -150,6 +152,11 @@ a.picture:hover, a.picture:active {
     margin: 4% auto; }
     .box .ironcenter > * {
       text-align: center; }
+  .box .float-right.tag {
+    background-color: rgba(255, 221, 87, 0.4);
+    position: absolute;
+    right: 16px;
+    top: 16px; }
 
 a.box {
   position: relative;
@@ -168,27 +175,32 @@ a.box {
     color: white; }
 
 .name {
-  margin-top: 10%;
+  margin-top: 7%;
   font-size: 18px;
   text-transform: capitalize;
   text-align: center;
   font-weight: bold; }
-
-.resource {
-  display: block;
-  margin: auto; }
+  .name span {
+    font-weight: 100;
+    color: #333;
+    text-transform: lowercase; }
 
 .icon.resource {
+  margin: 17% auto auto auto;
   text-align: center;
   height: auto;
   width: auto; }
   .icon.resource .fa-plus-circle {
     font-size: 6rem;
-    color: rgba(30, 36, 52, 0.2); }
+    color: rgba(35, 194, 255, 0.2); }
     .icon.resource .fa-plus-circle:hover {
-      color: #1e2434; }
+      color: #23c2ff; }
+
+.resource {
+  display: block; }
 
 .box.home {
+  display: block;
   min-height: 288px; }
 
 .title-home.title.is-2 {
@@ -258,6 +270,12 @@ a.box {
         position: absolute;
         right: -32px;
         top: 24px; }
+
+.iron-profile-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between; }
 
 .footer {
   background-color: #1E2434;

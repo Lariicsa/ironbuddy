@@ -1,5 +1,7 @@
 const User = require('../models/User')
 const Resource = require('../models/Resource')
+const passport = require('passport-local-mongoose')
+
 
 exports.getProfile  = async (req, res) => {
   const user = await User.findById(req.user._id).populate('resource')
@@ -14,11 +16,19 @@ exports.editProfileForm  = async (req, res, next) => {
 }
 
 exports.editProfile = async (req, res, next) => {
-  const { name, lastname, password } = req.body
+ 
+  const { name, lastname, password} = req.body
   const { userid } = req.query
+  if (password) await user.setPassword(req.user.password)
+  
 
-  if (password) await User.setPassword(password)
-
+/*   if (password) await User.setPassword(password, (err,user) =>{
+    if (err){
+      res.json({success: false, message: 'Password could not be saves. Please try again!'})
+    }else{
+      res.json({sucess: true, message: 'Your new password has been saved'})
+    }
+  }) */
   if (!req.file) {
     await User.findByIdAndUpdate(userid, { name, lastname, password })
   } else {

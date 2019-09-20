@@ -4,7 +4,7 @@ const User = require('../models/User')
 const admin = {
   name: 'Anahí',
   lastname: 'Flores',
-  email: 'anahi@ironhack.com', 
+  email: 'anahi@mail.com', 
   role: 'ADMIN'
 }
 

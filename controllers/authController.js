@@ -26,38 +26,30 @@ exports.login = (req, res, next)=>{
   
 
 
-/* exports.login = (req, res, next)=>{
-  passport.authenticate('local', (err, user)=>{
-    req.app.locals.user = user
-
-    req.logIn(user, err =>{
-      return res.redirect('/')
-    } )
-  })(req, res, next)
-} */
-
 //admin 
 exports.getAdmin = (req, res, next) => {
   res.render('auth/index-admin')
 }
 exports.userForm = (req, res, next) =>{
+
   res.render('auth/add-user')
 }
-
-
-
-exports.signupForm = (req, res) => {
-  res.render('auth/signup')
-}
-
-exports.signup = async (req, res) => {
-  const { email, password, name, lastname, level } = req.body;
+exports.createUser = async (req, res, next) =>{
+  const { name, lastname, email, level, course, password } = req.body;
   const confirmationCode = jwt.sign({ email }, process.env.SECRET);
-
-  const { _id } = await User.register({ email, name, lastname, level, confirmationCode }, password);
+  
+  
+  const characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  let psw = ''
+  for (let i = 0; i < 8; i++) {
+    psw += characters[Math.floor(Math.random() * characters.length)]
+  }
+  const temporaryPsw = psw
+  
+    const { _id } = await User.register({ name, lastname, email, level, course, confirmationCode }, req.user.password = temporaryPsw);
 
   const text = `
-    You are reciving this message because this email was used to sign up on
+    You are reciving this message because this email was used to log in on
     a very simple webapp.
 
     To verify this email direcction please go to this link:
@@ -65,6 +57,8 @@ exports.signup = async (req, res) => {
     <a href="http://localhost:${process.env.PORT}/auth/profile/verify/${confirmationCode}">
     "href="http://localhost:${process.env.PORT}/auth/profile/verify/${confirmationCode}"
     </a>
+
+    Your password is: <strong>${temporaryPsw}</strong>, make sure to change it.
   `;
 
   await transport.sendMail({
@@ -72,12 +66,21 @@ exports.signup = async (req, res) => {
     to: email,
     subject: 'Welcome to IronBuddy plattform!',
     text,
-    html: `<h1>Just clic to verify your account</h1>
+    html: `<h1>Just click to verify your account</h1>
       <p>${text}</p>
     `
   });
-  res.redirect('/auth/login');
+
+  res.redirect('/profile');
 }
+
+exports.allUsers = async (req, res, next) => {
+  const findUsers = await User.find()
+  res.render('/auth/all-users', {findUsers})
+
+}
+
+//
 
 exports.verifyAccount = async (req, res) => {
   const { code } = req.params;
