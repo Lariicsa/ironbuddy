@@ -49,7 +49,7 @@ exports.createUser = async (req, res, next) =>{
     const { _id } = await User.register({ name, lastname, email, level, course, confirmationCode }, req.user.password = temporaryPsw);
 
   const text = `
-    You are reciving this message because this email was used to sign up on
+    You are reciving this message because this email was used to log in on
     a very simple webapp.
 
     To verify this email direcction please go to this link:
@@ -66,7 +66,7 @@ exports.createUser = async (req, res, next) =>{
     to: email,
     subject: 'Welcome to IronBuddy plattform!',
     text,
-    html: `<h1>Just clic to verify your account</h1>
+    html: `<h1>Just click to verify your account</h1>
       <p>${text}</p>
     `
   });
@@ -74,40 +74,13 @@ exports.createUser = async (req, res, next) =>{
   res.redirect('/profile');
 }
 
+exports.allUsers = async (req, res, next) => {
+  const findUsers = await User.find()
+  res.render('/auth/all-users', {findUsers})
+
+}
 
 //
-exports.signupForm = (req, res) => {
-  res.render('auth/signup')
-}
-
-exports.signup = async (req, res) => {
-  const { name, lastname, email, level, course, password } = req.body;
-  const confirmationCode = jwt.sign({ email }, process.env.SECRET);
-
-  const { _id } = await User.register({ name, lastname, email, level, course, confirmationCode }, password);
-
-  const text = `
-    You are reciving this message because this email was used to sign up on
-    a very simple webapp.
-
-    To verify this email direcction please go to this link:
-
-    <a href="http://localhost:${process.env.PORT}/auth/profile/verify/${confirmationCode}">
-    "href="http://localhost:${process.env.PORT}/auth/profile/verify/${confirmationCode}"
-    </a>
-  `;
-
-  await transport.sendMail({
-    from: `"IronBuddy" <${process.env.EMAIL}>`,
-    to: email,
-    subject: 'Welcome to IronBuddy plattform!',
-    text,
-    html: `<h1>Just clic to verify your account</h1>
-      <p>${text}</p>
-    `
-  });
-  res.redirect('/auth/profile');
-}
 
 exports.verifyAccount = async (req, res) => {
   const { code } = req.params;

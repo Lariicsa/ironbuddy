@@ -1,13 +1,12 @@
 const router = require('express').Router()
-const { 
-  signupForm, 
-  signup, 
+const {  
   loginForm, 
   login, 
   logout,
   getAdmin,
   userForm,
   createUser,
+  allUsers,
 verifyAccount,
 resetVerifyCode } = require('../controllers/authController')
 const catchErrors = require('../middlewares/catchErrors')
@@ -28,8 +27,8 @@ router.post('/login', passport.authenticate('local'), login)
 router.get('/admin', isLoggedIn('/auth/login'), getAdmin)
 
 router.get('/add-user', isLoggedIn('/auth/login'), checkRole("ADMIN"), userForm)
-
 router.post('/add-user', isLoggedIn('/auth/login'), createUser)
+router.get('/all-users', isLoggedIn('/auth/login'), checkRole("ADMIN"), allUsers)
 
 //USER
 router.get('/profile/verify/:code', isLoggedIn('/auth/login'), catchErrors(verifyAccount));
