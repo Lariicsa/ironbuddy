@@ -15,6 +15,10 @@ const userSchema = new Schema(
       type: String,
       enum: ['STUDENT', 'BUDDY']
     },
+    course:{
+      type: String,
+      enum: ['WEB DEVELOPMENT', 'UX-UI DESIGN', 'DATA ANALYTICS']
+    },
     resource: {
       ref: 'Resource',
       type: Schema.Types.ObjectId
