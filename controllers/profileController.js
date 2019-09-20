@@ -19,23 +19,20 @@ exports.editProfile = async (req, res, next) => {
  
   const { name, lastname, password} = req.body
   const { userid } = req.query
-  if (password) await user.setPassword(req.user.password)
-  
 
-/*   if (password) await User.setPassword(password, (err,user) =>{
-    if (err){
-      res.json({success: false, message: 'Password could not be saves. Please try again!'})
-    }else{
-      res.json({sucess: true, message: 'Your new password has been saved'})
-    }
-  }) */
-  if (!req.file) {
-    await User.findByIdAndUpdate(userid, { name, lastname, password })
-  } else {
+  const user = await User.findByIdAndUpdate(userid, { name, lastname})
+
+  if (req.file) {
+  
     const { url: img } = req.file
-    await User.findByIdAndUpdate(userid, { name, lastname, password, img })
+    await User.findByIdAndUpdate(userid, {img })
     req.app.locals.user.img = img
   }
+
+  user.setPassword(password, function(){
+    user.save()
+    //res.redirect('/auth/login')
+  })
   res.redirect('/profile')
 }
 
