@@ -14,6 +14,11 @@ exports.editProfileForm  = async (req, res, next) => {
   const user = await User.findById(userid).populate('resource')
   res.render('profile/edit', user)
 }
+exports.editAdminForm  = async (req, res, next) => {
+  const { userid } = req.query
+  const user = await User.findById(userid).populate('resource')
+  res.render('profile/edit-admin', user)
+}
 
 exports.editProfile = async (req, res, next) => {
  

@@ -10,9 +10,18 @@
 				<p class="subtitle is-6">{{this.email}}</p>
 			</div>
 
+			
+			{{#if isAdmin}}
+			<a class="ironback icon ironicon-top-right" href="/profile/edit-admin?userid={{this._id}}">
+				<i class="far fa-edit"></i>
+			</a>
+			{{else}}
 			<a class="ironback icon ironicon-top-right" href="/profile/edit?userid={{this._id}}">
 				<i class="far fa-edit"></i>
 			</a>
+			{{/if}}
+
+
 			<hr>
 			<div class="buttons is-right">
 				<a href="/profile/resources" class="button is-text">
