@@ -31,13 +31,22 @@ exports.getAdmin = (req, res, next) => {
   res.render('auth/index-admin')
 }
 exports.userForm = (req, res, next) =>{
+
   res.render('auth/add-user')
 }
 exports.createUser = async (req, res, next) =>{
   const { name, lastname, email, level, course, password } = req.body;
   const confirmationCode = jwt.sign({ email }, process.env.SECRET);
-
-  const { _id } = await User.register({ name, lastname, email, level, course, confirmationCode }, password);
+  
+  
+  const characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  let psw = ''
+  for (let i = 0; i < 8; i++) {
+    psw += characters[Math.floor(Math.random() * characters.length)]
+  }
+  const temporaryPsw = psw
+  
+    const { _id } = await User.register({ name, lastname, email, level, course, confirmationCode }, req.user.password = temporaryPsw);
 
   const text = `
     You are reciving this message because this email was used to sign up on
@@ -48,6 +57,8 @@ exports.createUser = async (req, res, next) =>{
     <a href="http://localhost:${process.env.PORT}/auth/profile/verify/${confirmationCode}">
     "href="http://localhost:${process.env.PORT}/auth/profile/verify/${confirmationCode}"
     </a>
+
+    Your password is: <strong>${temporaryPsw}</strong>, make sure to change it.
   `;
 
   await transport.sendMail({
@@ -59,7 +70,8 @@ exports.createUser = async (req, res, next) =>{
       <p>${text}</p>
     `
   });
-  res.redirect('/auth/profile');
+
+  res.redirect('/profile');
 }
 
 

@@ -28,6 +28,7 @@ router.post('/login', passport.authenticate('local'), login)
 router.get('/admin', isLoggedIn('/auth/login'), getAdmin)
 
 router.get('/add-user', isLoggedIn('/auth/login'), checkRole("ADMIN"), userForm)
+
 router.post('/add-user', isLoggedIn('/auth/login'), createUser)
 
 //USER
