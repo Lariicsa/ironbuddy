@@ -26,16 +26,6 @@ exports.login = (req, res, next)=>{
   
 
 
-/* exports.login = (req, res, next)=>{
-  passport.authenticate('local', (err, user)=>{
-    req.app.locals.user = user
-
-    req.logIn(user, err =>{
-      return res.redirect('/')
-    } )
-  })(req, res, next)
-} */
-
 //admin 
 exports.getAdmin = (req, res, next) => {
   res.render('auth/index-admin')
@@ -43,18 +33,11 @@ exports.getAdmin = (req, res, next) => {
 exports.userForm = (req, res, next) =>{
   res.render('auth/add-user')
 }
-
-
-
-exports.signupForm = (req, res) => {
-  res.render('auth/signup')
-}
-
-exports.signup = async (req, res) => {
-  const { email, password, name, lastname, level } = req.body;
+exports.createUser = async (req, res, next) =>{
+  const { name, lastname, email, level, course, password } = req.body;
   const confirmationCode = jwt.sign({ email }, process.env.SECRET);
 
-  const { _id } = await User.register({ email, name, lastname, level, confirmationCode }, password);
+  const { _id } = await User.register({ name, lastname, email, level, course, confirmationCode }, password);
 
   const text = `
     You are reciving this message because this email was used to sign up on
@@ -76,7 +59,42 @@ exports.signup = async (req, res) => {
       <p>${text}</p>
     `
   });
-  res.redirect('/auth/login');
+  res.redirect('/auth/profile');
+}
+
+
+//
+exports.signupForm = (req, res) => {
+  res.render('auth/signup')
+}
+
+exports.signup = async (req, res) => {
+  const { name, lastname, email, level, course, password } = req.body;
+  const confirmationCode = jwt.sign({ email }, process.env.SECRET);
+
+  const { _id } = await User.register({ name, lastname, email, level, course, confirmationCode }, password);
+
+  const text = `
+    You are reciving this message because this email was used to sign up on
+    a very simple webapp.
+
+    To verify this email direcction please go to this link:
+
+    <a href="http://localhost:${process.env.PORT}/auth/profile/verify/${confirmationCode}">
+    "href="http://localhost:${process.env.PORT}/auth/profile/verify/${confirmationCode}"
+    </a>
+  `;
+
+  await transport.sendMail({
+    from: `"IronBuddy" <${process.env.EMAIL}>`,
+    to: email,
+    subject: 'Welcome to IronBuddy plattform!',
+    text,
+    html: `<h1>Just clic to verify your account</h1>
+      <p>${text}</p>
+    `
+  });
+  res.redirect('/auth/profile');
 }
 
 exports.verifyAccount = async (req, res) => {
