@@ -13,7 +13,7 @@ const session = require('express-session')
 const MongoStore = require('connect-mongo')(session)
 
 mongoose
-  .connect(process.env.DB, {
+  .connect(process.env.DB || 'mongodb://localhost/ironbuddy', {
     useNewUrlParser: true
   })
   .then(x => {
