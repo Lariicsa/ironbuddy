@@ -9,9 +9,9 @@ const admin = {
 }
 
 mongoose
-  .connect('mongodb://localhost/ironbuddy', { useNewUrlParser: true })
+  .connect(process.env.DB, { useNewUrlParser: true })
   .then(async () => {
-    const userdata = await User.register(admin, admin.password = 'anahi123')
+    User.register(admin, admin.password = 'anahi123')
     console.log(`User created`)
     mongoose.connection.close()
   })
